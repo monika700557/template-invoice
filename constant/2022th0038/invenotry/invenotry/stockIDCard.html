@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" style="-webkit-print-color-adjust: exact;print-color-adjust: exact;">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+        }
+
+        th,
+        td {
+            vertical-align: top;
+        }
+
+        .common-table th,
+        .common-table td {
+            padding: 9px 5px;
+        }
+        .common-table th{
+            font-weight: bolder;
+        }
+        .common-table tr:first-child th {
+            border-top: 1px solid #C2C2C2;
+            padding-bottom: 3px;
+        }
+        .common-table tr:last-child th {
+            border-bottom: 1px solid #C2C2C2;
+            padding-top: 3px;
+        }
+
+        .common-table tfoot td {
+            font-weight: 700;
+            border-top: 1px solid #C2C2C2;
+            border-bottom: 1px solid #C2C2C2;
+        }
+
+        .common-table tr {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;color: #2A2A2A;font-size: 11px;font-family: 'Open Sans', sans-serif;">
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;">SNo</th>
+                <th style="white-space: nowrap;"></th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>RefNo</th>
+                <th>Customer</th>
+                <th colspan="3" style="color: #74CBFE;">Inward</th>
+                <th colspan="5" style="color: #FFBF75;">Outward</th>
+                <th colspan="3" style="color: #61D6D0;">Closing</th>
+                <th>Remark</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th style="color: #74CBFE;">Qty</th>
+                <th style="color: #74CBFE;">Price</th>
+                <th style="color: #74CBFE;">Amount</th>
+                <th style="color: #FFBF75;">Qty</th>
+                <th style="color: #FFBF75;">Price</th>
+                <th style="color: #FFBF75;">Amount</th>
+                <th style="color: #FFBF75;">Currency</th>
+                <th style="color: #FFBF75;">Forex</th>
+                <th style="color: #61D6D0;">Qty</th>
+                <th style="color: #61D6D0;">Price</th>
+                <th style="color: #61D6D0;">Amount</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products }}
+                <tr style="background: #F7F8F9;">
+                    <td>{{sr_no}}</td>
+                    <td></td>
+                    <td ><b>{{stockId}} {{SKU}}</b></td>
+                    <td>{{pdate}}</td>
+                    <td>OP</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{inward_Qty}}</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{outward_Qty}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{closing_Qty}}</td>
+                    <td></td>
+                    <td></td>
+                    <td style="min-width: 150px;"></td>
+                </tr>
+                {{#each this.subRowData}}
+                    <tr style="background: #F7F8F9;">
+                        <td></td>
+                        <td></td>
+                        <td>{{this.Location}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.voucher_type}}</td>
+                        <td>{{this.refNo}}</td>
+                        <td>Sartoro</td>
+                        {{#if this.inward}}
+                            <td  style="color: #74CBFE;">{{this.inward.qty}}</td>
+                            <td  style="color: #74CBFE;">{{this.inward.price}}</td>
+                            <td  style="color: #74CBFE;">{{this.inward.amount_total}} </td>
+                        {{else}}
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        {{/if}}
+                        {{#if this.outward}}
+                            <td style="color: #FFBF75;">{{this.outward.qty}}</td>
+                            <td style="color: #FFBF75;">{{this.outward.price}}</td>
+                            <td style="color: #FFBF75;">{{this.outward.amount_total}} </td>
+                            <td style="color: #FFBF75;">{{this.outward.currency}} </td>
+                            <td style="color: #FFBF75;">{{this.outward.forex}} </td>
+                        {{else}}
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        {{/if}}
+                        {{#if this.closing}}
+                            <td style="color: #61D6D0;">{{this.closing.qty}}</td>
+                            <td style="color: #61D6D0;">{{this.closing.price}}</td>
+                            <td style="color: #61D6D0;">{{this.closing.amount_total}} </td>
+                        {{else}}
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        {{/if}}
+                        <td>{{this.remark}}</td>
+                    </tr> 
+                {{/each}} 
+            {{/each}} 
+            <tr style="font-weight: bold;">
+                <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Total</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="color: #74CBFE;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{totalInwardQty}}</td>
+                <td colspan="2" style="text-align: right;color: #74CBFE;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{totalInwardAmount}}</td>
+                <td style="color: #FFBF75;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{totalOutwardQty}}</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="color: #FFBF75;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{totalOutwardAmount}}</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="color: #61D6D0;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{totalClosingQty}}</td>
+                <td colspan="2" style="text-align: right;color: #61D6D0;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{totalClosingAmount}}</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            
+        </tfoot>
+    </table>
+</body>
+
+</html>

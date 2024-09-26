@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" style="-webkit-print-color-adjust: exact;print-color-adjust: exact;">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+        }
+
+        .common-table tbody>tr {
+            background-color: #fff;
+        }
+
+        .common-table tbody>tr.sub-row {
+            background-color: #F7F8F9;
+        }
+
+        th,
+        td {
+            vertical-align: top;
+        }
+
+        tfoot td {
+            border-bottom: 1px solid #D9D9D9;
+        }
+
+        .common-table th,
+        .common-table td {
+            padding: 9px 0;
+        }
+
+        .common-table th {
+            border-bottom: 1px solid #D9D9D9;
+            border-top: 1px solid #D9D9D9;
+        }
+
+        .common-table tfoot td {
+            font-weight: 700;
+        }
+
+        .common-table tr {
+            break-inside: avoid;
+        }
+
+        .main-row td {
+            padding: 2px 0;
+        }
+
+        .sub-row td {
+            padding: 2px 0;
+            font-size: 11px;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;color: #2A2A2A;font-size: 13px; font-family: 'Open Sans', sans-serif;">
+
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;color: #5CC7C1;text-align: left;">Payment</th>
+                <th style="text-align:right">Expected</th>
+                <th style="text-align:right">Counted</th>
+                <th style="padding-right: 10px;text-align:right">Difference</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="main-row">
+                <td style="padding-left: 10px; text-align: left;">Cash<span style="color:#A4A4A4">
+                        ({{float.opening_float}})</span></td>
+                <td style="text-align: right;">{{payment.cash.expected}}</td>
+                <td style="text-align: right;">{{payment.cash.counted}}</td>
+                <td style="padding-right: 10px;text-align: right;">{{payment.cash.difference}}</td>
+            </tr>
+            <tr class="main-row">
+                <td style="padding-left: 10px; text-align: left;">Credit Card</td>
+                <td style="text-align: right;">{{payment.credit_card.expected}}</td>
+                <td style="text-align: right;">{{payment.credit_card.counted}}</td>
+                <td style="padding-right: 10px;text-align: right;">{{payment.credit_card.difference}}</td>
+            </tr>
+            {{#if card_details_flag}}
+            {{#each card_details}}
+            <tr class="sub-row">
+                <td style="text-align: left;padding-left: 50px;">{{name}}</td>
+                <td style="text-align: right;">{{amount}}</td>
+                <td style="text-align: right;"></td>
+                <td style="padding-right: 10px;text-align: right;"></td>
+            </tr>
+            {{/each}}
+            {{/if}}
+            <tr class="main-row">
+                <td style="padding-left: 10px; text-align: left;">Bank</td>
+                <td style="text-align: right;">{{payment.bank.expected}}</td>
+                <td style="text-align: right;">{{payment.bank.counted}}</td>
+                <td style="padding-right: 10px;text-align: right;">{{payment.bank.difference}}</td>
+            </tr>
+            {{#if bank_details_flag}}
+            {{#each bank_details}}
+            <tr class="sub-row">
+                <td style="text-align: left;padding-left: 50px;">{{name}}</td>
+                <td style="text-align: right;">{{amount}}</td>
+                <td style="text-align: right;"></td>
+                <td style="padding-right: 10px;text-align: right;"></td>
+            </tr>
+            {{/each}}
+            {{/if}}
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;">Sub Total<br>
+                    Float<br>
+                    Total</td>
+
+                <td></td>
+                <td style="padding-right: 10px;text-align: right;">{{payment.Sub_Total}}<br>
+                    {{payment.float}}<br>
+                    {{payment.total}}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;color: #5CC7C1;text-align: left;">Float </th>
+                <th style="text-align: left;">Notes</th>
+                <th style="text-align:right"></th>
+                <th style="text-align:right"></th>
+                <th style="padding-right: 10px;text-align:right"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding-left: 10px; text-align: left;">Opening float </td>
+                <td style="text-align: left;">-</td>
+                <td style="text-align:right"></td>
+                <td style="text-align:right"></td>
+                <td style="text-align:right;padding-right: 10px;">{{float.opening_float}} </td>
+            </tr>
+            {{#each products}}
+            {{#if IN }}
+            <tr>
+                <td style="padding-left: 10px; text-align: left;">Cash In</td>
+                <td style="text-align: left;">{{note}}</td>
+                <td style="text-align:right"></td>
+                <td style="text-align:right"></td>
+                <td style="text-align:right;padding-right: 10px;">{{amount}}</td>
+            </tr>
+            {{else if HOD}}
+            <tr>
+                <td style="padding-left: 10px; text-align: left;">Cash Out (HOD)</td>
+                <td style="text-align: left;">{{note}}</td>
+                <td style="text-align:right"></td>
+                <td style="text-align:right"></td>
+                <td style="text-align:right;padding-right: 10px;">{{amount}}</td>
+            </tr>
+            {{else}}
+            <tr>
+                <td style="padding-left: 10px; text-align: left;">Cash Out</td>
+                <td style="text-align: left;">{{note}}</td>
+                <td style="text-align:right"></td>
+                <td style="text-align:right"></td>
+                <td style="text-align:right;padding-right: 10px;">{{amount}}</td>
+            </tr>
+            {{/if}}
+            {{/each}}
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;">Actual Float <br>
+                    Total Cash Balance<br>
+                    Net Cash Remittance enclosed</td>
+                <td></td>
+                <td></td>
+                <td style="padding-right: 10px;text-align: right;">{{float.actual_float}}<br>
+                    {{float.total_cashBalance}}<br>
+                    {{float.net_cash_enclosed}}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;color: #5CC7C1;text-align: left;">Payment Summary </th>
+                <th style="text-align: left;"></th>
+                <th style="text-align:right"></th>
+                <th style="text-align:right"></th>
+                <th style="padding-right: 10px;text-align:right"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding-left: 10px; text-align: left;">Payment received<br>
+                    Refund<br>
+                <td style="text-align: left;"></td>
+                <td style="text-align:right"></td>
+                <td style="text-align:right"></td>
+                <td style="text-align:right;padding-right: 10px;">{{payment_summery.receive}}<br>
+                    {{payment_summery.redund}}</td>
+            </tr>
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;">Net Received </td>
+                <td></td>
+                <td></td>
+                <td style="padding-right: 10px;text-align: right;"> {{payment_summery.net_receive}}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;color: #5CC7C1;text-align: left;">Sales Summary</th>
+                <th style="text-align: left;"></th>
+                <th style="text-align:right"></th>
+                <th style="text-align:right"></th>
+                <th style="padding-right: 10px;text-align:right"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding-left: 10px; text-align: left;">Sales<br>
+                    Gift Card <br>
+                    Deposit <br>
+                    Custom order / Repair Order <br>
+                    Credit note
+                <td style="text-align: left;"></td>
+                <td style="text-align:right"></td>
+                <td style="text-align:left;color: #5CC7C1;">+<br>
+                    +<br>
+                    +<br>
+                    +<br>
+                    <span style="color:#FF5757">-</span><br>
+                </td>
+                <td style="text-align:right;padding-right: 10px;">{{sales_summary.sales}}<br>
+                    {{sales_summary.giftcard}}<br>
+                    {{sales_summary.deposit}}<br>
+                    {{sales_summary.custom_order}}<br>
+                    <span style="color:#FF5757">( {{sales_summary.creditnote}})</span><br>
+                </td>
+            </tr>
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;">Net Sales<br>
+                    Average Sales Value<br>
+                    Number of Transaction<br>
+                    Number of Customer
+                </td>
+                <td></td>
+                <td></td>
+                <td style="padding-right: 10px;text-align: right;">{{sales_summary.totalNetSale}} <br>
+                    {{sales_summary.avg_sales}} <br>
+                    {{sales_summary.no_transaction}} <br>
+                    {{sales_summary.num_cust}} <br></td>
+            </tr>
+        </tfoot>
+    </table>
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;color: #5CC7C1;text-align: left;">Tax Summary</th>
+                <th style="text-align: left;"></th>
+                <th style="text-align:right"></th>
+                <th style="text-align:right"></th>
+                <th style="padding-right: 10px;text-align:right"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding-left: 10px; text-align: left;">Sales</td>
+                <td style="text-align: left;"></td>
+                <td style="text-align:right"></td>
+                <td style="text-align:left;"></td>
+                <td style="text-align:right;padding-right: 10px;">{{tax_summery.sales}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;">Total </td>
+                <td></td>
+                <td></td>
+                <td style="padding-right: 10px;text-align: right;">{{tax_summery.total}}</td>
+            </tr>
+        </tfoot>
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;">Tax Total </td>
+                <td></td>
+                <td></td>
+                <td style="padding-right: 10px;text-align: right;">{{tax_summery.tax}}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div style="display: flex;margin-top: 30px;">
+        <span style="white-space: nowrap;font-weight: 600;">Notes : </span>
+
+    </div>
+</body>
+
+</html>

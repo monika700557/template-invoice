@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" style="-webkit-print-color-adjust: exact;print-color-adjust: exact;">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        *{
+                font-family: 'Open Sans', sans-serif;
+                }
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+            font-size: 10px;
+        }
+
+        .common-table tbody>tr:nth-child(even) {
+            background-color: #F7F8F9;
+        }
+
+        th,
+        td {
+            vertical-align: top;
+        }
+
+        tfoot td {
+            border-bottom: 1px solid #D9D9D9;
+        }
+
+        .common-table th,
+        .common-table td {
+            padding: 9px 10px;
+        }
+
+        .common-table th {
+            border-bottom: 1px solid #D9D9D9;
+            border-top: 1px solid #D9D9D9;
+        }
+
+        .common-table tfoot td {
+            font-weight: 700;
+        }
+
+        .common-table tr {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;color: #2A2A2A;font-size: 13px;">
+    <table style="width: 100%;padding: 0 20px;text-transform: uppercase;">
+        <tbody>
+            <tr>
+                <td style="width:25%; padding: 0 5px; height:75px;text-align: center;color: #fff;">
+                    <div
+                        style="height: 100%;background-color: #68B8F2; border-radius: 10px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                        <span style="display: block;font-weight: 600;margin-bottom: 10px;">TOTAL QTY</span>
+                        <span style="font-weight: 700;font-size: 20px;">{{totalStock}}</span>
+                    </div>
+                </td>
+                <td style="width:25%; padding: 0 5px; height:75px;text-align: center;color: #fff;">
+                    <div
+                        style="height: 100%;background-color: #E97070;border-radius: 10px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                        <span style="display: block;font-weight: 600;margin-bottom: 10px;">SALE ORDER</span>
+                        <span style="font-weight: 700;font-size: 20px;">{{totalSalesOrder}}</span>
+                    </div>
+                </td>
+                <td style="width:25%; padding: 0 5px;  height:75px;text-align: center;color: #fff;">
+                    <div
+                        style="height: 100%;background-color: #61D6D0;border-radius: 10px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                        <span style="display: block;font-weight: 600;margin-bottom: 10px;">Available</span>
+                        <span style="font-weight: 700;font-size: 20px;">{{available}}</span>
+                    </div>
+                </td>
+                <td style="width:25%; padding: 0 5px;  height:75px;text-align: center;color: #fff;">
+                    <div
+                        style="height: 100%;background-color: #5FBEAA;border-radius: 10px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                        <span style="display: block;font-weight: 600;margin-bottom: 10px;">REORDER QTY</span>
+                        <span style="font-weight: 700;font-size: 20px;">{{totalRQ}}</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;">#</th>
+                <th>Date
+                    <br> <span style="font-size: 9px"> Time</span>
+                </th>
+                <th>Stock take No
+                    <br> <span style="font-size: 9px">User</span>
+                </th>
+                <th>Warehouse
+                </th>
+                <th>Store
+                </th>
+                <th>SKU Count</th>
+                <th>Stock</th>
+                <th>SO</th>
+                <th>Available</th>
+                <th>Reorder Pt.</th>
+                <th style="padding-right: 10px;">Reorder Qty.</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td style="padding-left: 10px;">{{sr_no}}</td>
+                <td>{{pdate}}
+                </td>
+                <td>{{ls_no}}
+                    <br><span style="font-size: 12px;color: #6A6A6A;">{{user}}</span>
+                </td>
+                <td>{{supplier_name}}
+                </td>
+                <td>{{stores}}<br>
+                </td>
+                <td>{{SKUcount}}</td>
+                <td>{{stock}}</td>
+                <td>{{sales_order}}</td>
+                <td>{{available}}</td>
+                <td>{{reorderpoint}}</td>
+                <td>{{reorderquantity}}</td>
+            </tr>
+            {{#unless @last}}
+                        {{# if pageBreak }}
+                                <tr>  
+                                    <td colspan="2" style="text-align: left;padding-left: 10px;font-weight: bold;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Sub Total</td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                                        {{itemAt @root.subTotalSKU (  subTotalSKUIndex) }}</td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                                        {{itemAt @root.subTotalStock (  subTotalStockIndex) }}</td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                                        {{itemAt @root.subTotalso (  subTotalsoIndex) }}
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                                        {{itemAt  @root.subTotalaval ( subTotalavalIndex) }}</td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                                        {{itemAt  @root.subTotalRP ( subTotalRPIndex) }}</td>
+                                    <td style="padding-right: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">  
+                                    {{itemAt  @root.subTotalRQ ( subTotalRQIndex) }} </td> 
+                                </tr>
+                                <tr style="page-break-after: always;"> </tr>
+                            {{/if}}
+                        {{/unless}}
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;">Total</td>
+                <td style="border-top: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;">{{totalSKU}}</td>
+                <td style="border-top: 1px solid #d9d9d9;">{{totalstock}}</td>
+                <td style="border-top: 1px solid #d9d9d9;">{{totalSO}}</td>
+                <td style="border-top: 1px solid #d9d9d9;">{{totalaval}}</td>
+                <td style="border-top: 1px solid #d9d9d9;">{{totalRP}}</td>
+                <td style="padding-right: 10px;border-top: 1px solid #d9d9d9;">{{totalrq}}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+</html>

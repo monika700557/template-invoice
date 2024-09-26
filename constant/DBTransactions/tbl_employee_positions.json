@@ -1,0 +1,25 @@
+[{
+  "_id": "5fe4229711b7f036ce3b7e82",
+  "name": "Administrator",
+  "description": "Administrator has full privileges to access and manage GIS user",
+  "is_admin": 1,
+  "is_delete": 0
+   
+},{
+  "_id": "5fe6b148ddeced149f20e392",
+  "name": "Manager",
+  "description": "Management has wide range of privileges to access and manage GIS user",
+  "is_delete": 0
+},{
+  "_id": "5fe6b17ffc4ac32c1a114872",
+  "name": "Inventory",
+  "description": "User has access to Inventory",
+  "is_delete": 0
+  
+},{
+  "_id": "5fe6b194114f0f52e11b22c9",
+  "name": "POS",
+  "description": "User has access to POS",
+  "is_delete": 0
+  
+}]

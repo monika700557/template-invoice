@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+        }
+
+        .common-table tbody>tr:nth-child(even) {
+            background-color: #F7F8F9;
+        }
+
+        th,
+        td {
+            vertical-align: top;
+        }
+
+        .common-table th,
+        .common-table td {
+            padding: 9px 5px;
+        }
+
+        .common-table th {
+            border-bottom: 1px solid #C9C9C9;
+            border-top: 1px solid #C9C9C9;
+        }
+
+        .common-table tfoot td {
+            font-weight: 700;
+        }
+
+        .common-table tr {
+            break-inside: avoid;
+        }
+
+        .icon {
+            width: 12px;
+            margin-right: 12px;
+        }
+
+        .total-item-table tbody tr:last-child td {
+            padding-bottom: 20px !important;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit</title>
+</head>
+
+<body style="margin: 0;color: #2A2A2A;font-size: 12px;font-family: 'Open Sans', sans-serif;">
+
+    <table class="common-table">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 12px;text-align: left;">Particulars </th>
+                <th>Transaction </th>
+                <th>Ref.</th>
+                <th>Remark </th>
+                <th style="padding-right: 20px;text-align: right;">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td style="padding-left: 12px;text-align: left;">Deposit </td>
+                <td>{{transaction}}</td>
+                <td>{{ref_no}}</td>
+                <td>{{remark}} </td>
+                <td style="padding-right: 20px;text-align: right;">{{amount}}</td>
+            </tr>
+            {{/each}}
+        <tfoot>
+            <tr>
+                <td style="border-top:1px solid #C9C9C9;border-bottom:1px solid #C9C9C9"></td>
+                <td style="border-top:1px solid #C9C9C9;border-bottom:1px solid #C9C9C9"></td>
+                <td style="border-top:1px solid #C9C9C9;border-bottom:1px solid #C9C9C9"></td>
+                <td style="border-top:1px solid #C9C9C9;border-bottom:1px solid #C9C9C9"></td>
+                <td style="border-top:1px solid #C9C9C9;border-bottom:1px solid #C9C9C9;padding-right: 20px;text-align: right; ">
+                    {{totalAmount}} </td>
+            </tr>
+        </tfoot>
+        </tbody>
+
+
+    </table>
+    <table style="width: 100%;margin-top: 10px; border-spacing: 0;" cellspacing="0">
+        <tbody>
+            <tr>
+                <td style="width: 40%;padding-right: 5px;padding-left: 20px;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="font-weight: 600;">Payment Method</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        {{#if cash_show}}
+                        <tr>
+                            <td style="padding-top: 15px;">Cash</td>
+                            <td style="text-align: right; padding-top: 15px;">{{cash}}</td>
+                        </tr>
+                        {{else}}
+                        <tr></tr>
+                        {{/if}}
+                        {{#if creditCard_show}}
+                        <tr>
+                            <td>Credit card</td>
+                            <td style="text-align: right;">{{credit_card}}</td>
+                        </tr>
+                        {{else}}
+                        <tr></tr>
+                        {{/if}}
+                        {{#if bank_show}}
+                        <tr>
+                            <td>Bank</td>
+                            <td style="text-align: right;width: 40%;">{{bank}}</td>
+                        </tr>
+                        {{else}}
+                        <tr></tr>
+                        {{/if}}
+
+                    </table>
+                </td>
+                <td style="width: 20%;padding-left: 20px;padding-right: 5px;">
+                </td>
+                <td style="width: 40%;">
+                    <table style="width: 100%;border-spacing: 0;">
+                        <tbody>
+                            <tr>
+                                <td style="font-size:12px;padding-bottom: 10px;">Net Amount </td>
+                                <td style="text-align: right;font-size:12px; padding-right: 20px;">{{totalAmount}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td style="padding-top: 12px;border-top: 1px solid #C9C9C9;font-weight: 600;">
+                                    Grand Total</td>
+                                <td style="padding-top: 12px;border-top: 1px solid #C9C9C9;text-align: right;font-weight: 600;padding-right: 20px;">
+                                    {{totalAmount}}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="display: flex;padding-right: 30px;justify-content: space-between;margin-top: 10px;">
+        <div style="display: flex;padding-left: 20px;">
+            <span style="white-space: nowrap;font-weight: 600;">Note :</span>
+
+        </div>
+
+    </div>
+    <div style="display: flex;justify-content: space-between;margin-top: 38px;padding-left: 20px;">
+        <div style="text-align: center;padding-top: 38px;">
+            <span>Please check order details and confirm to us by signing. Thank you</span>
+        </div>
+        <div style="padding-bottom: 38px;border-bottom: 1px solid #C9C9C9;width: 30%;text-align: center;">
+            <span>Client Signature
+            </span>
+        </div>
+    </div>
+</body>
+
+</html>

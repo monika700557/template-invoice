@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .common-table {
+        text-align: center;
+        width: 100%;
+        border-spacing: 0;
+      }
+
+      .common-table tbody > tr:nth-child(even) {
+        background-color: #f7f8f9;
+      }
+
+      th,
+      td {
+        vertical-align: top;
+      }
+
+      .common-table th,
+      .common-table td {
+        padding: 9px 5px;
+      }
+
+      .common-table th {
+        border-bottom: 1px solid #2a2a2a;
+        border-top: 1px solid #2a2a2a;
+      }
+
+      .common-table tfoot td {
+        font-weight: 700;
+      }
+
+      .common-table tr {
+        break-inside: avoid;
+      }
+
+      .icon {
+        width: 12px;
+        margin-right: 12px;
+      }
+
+      .total-item-table tbody tr:last-child td {
+        padding-bottom: 20px !important;
+      }
+    </style>
+
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom-order-pdf</title>
+  </head>
+
+  <body
+    style="
+      margin: 0;
+      color: #2a2a2a;
+      font-size: 12px;
+      font-family: 'Open Sans', sans-serif;
+    "
+  >
+    <table class="common-table">
+      <thead style="display: table-header-group; break-inside: avoid">
+        <tr>
+          <th style="padding-left: 12px">#</th>
+          <th>Image</th>
+          <th>SKU</th>
+          <th style="text-align: left">Description</th>
+          <th>Size</th>
+          <th>Qty</th>
+          <th>Price</th>
+
+          <th style="padding-right: 10px">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if show_row}} {{else}} {{#each products}}
+        <tr>
+          <td style="padding-left: 12px">{{sr_no}}</td>
+          <td style="height: 50px; width: 50px; padding: 2px 5px">
+            <img
+              style="width: 100%; height: 100%; display: block"
+              src="{{main_image}}"
+              alt=""
+            />
+          </td>
+          <td style="font-weight: 600">{{SKU}}</td>
+          <td style="width: 30%; text-align: left">
+            <span
+              style="
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
+              "
+            >
+              {{Description.shortDescription}}
+
+              
+              <ul style="list-style: none; padding: 0; margin-top: 3px;">
+                <li style="display: inline; margin-right: 5px;">{{Description.metalName}}</li>
+                <li style="display: inline; margin-left: 10px;">{{GrossWt}} <span style="margin-left: -3px;">g</span></li>
+                <!-- <li style="display: inline; margin-left: 10px;">{{Description.firstStoneCts}}</li>
+                <li style="display: inline ; margin-left: -3px;">{{Description.firstStoneUnit}}</li> -->
+                <!-- {{#each Description.stoneSizeArray}}
+                  <li>{{this}}</li>
+                {{/each}} -->
+              </ul>
+
+              <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 10px;">
+                <!-- Container for firstStonePcs -->
+                <li style="display: flex; flex-direction: column;">
+                  {{#each Description.firstStonePcs}}
+                    <div style="margin-bottom: 5px;">{{this}}</div>
+                  {{/each}}
+                </li>
+              
+                <!-- Container for stoneName -->
+                <li style="display: inline; margin-right: 5px;">{{Description.codeName}}</li>
+
+                <li style="display: flex; flex-direction: column;">
+                  {{#each Description.firstStoneCts}}
+                    <div style="margin-bottom: 5px;">{{this}}</div>
+                  {{/each}}
+                </li>
+
+                <li style="display: flex; flex-direction: column;  margin-left: -10px;">
+                  {{#each Description.firstStoneUnit}}
+                    <div style="margin-bottom: 5px; ">{{this}}</div>
+                  {{/each}}
+                </li>
+              </ul>
+
+
+
+
+
+              {{#each Description.Stones}}
+{{codeName}}
+
+              {{/each}}
+
+
+
+              <ul style="padding: 0; margin-left: 1rem; margin-top: -4px;">
+                {{#each Description.stoneNameShapeArray}}
+                <li>{{this}}</li>
+                {{/each}}
+              </ul>
+            </span>
+          </td>
+          <!-- <td style="width:80% ;text-align:left;"><span>{{Description}}</span></td> -->
+
+          <td>{{size}}</td>
+          <td>{{Qty}}</td>
+          <td style="padding: 9px 0">{{price}}</td>
+          <td>{{amount}}</td>
+
+
+        </tr>
+        {{#if mixMatch}} {{else}}
+        <tr style="color: #c9c9c9">
+          <td></td>
+          <td>Remark:</td>
+          <td colspan="5" style="font-weight: 400; text-align: left">
+            {{remark}}
+          </td>
+          <td></td>
+        </tr>
+        {{/if}} {{#if mixMatch}}
+        <tr>
+          <td style="padding-left: 12px"></td>
+          <td style="height: 50px; width: 50px; padding: 2px 5px">
+            <img
+              style="width: 100%; height: 100%; display: block"
+              src="{{diamond_img}}"
+              alt=""
+            />
+          </td>
+          <td>-<br />{{diamond_StockID}}</td>
+          <td style="width: 30%; text-align: left">{{diamond_name}}</td>
+          <td>{{diamond_Carat}}</td>
+          <td>{{diamond_Pcs}}</td>
+          <td style="padding: 9px 0">{{diamond_TagPrice}}</td>
+          <td>{{diamond_TagPrice}}</td>
+        </tr>
+        <tr style="color: #d9d9d9">
+          <td></td>
+          <td>Remark:</td>
+          <td colspan="3" style="font-weight: 400">{{remark}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        {{#if custom_design}}
+        <tr>
+          <td colspan="8" style="text-align: left">
+            <div style="margin-bottom: 50px">
+              <div style="display: flex; padding-left: 20px; margin-top: 30px">
+                <span style="white-space: nowrap; font-weight: 600"
+                  >Design</span
+                >
+              </div>
+              <div style="margin-top: 10px; border: 1px solid#C9C9C9">
+                <div
+                  style="
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 600;
+                  "
+                >
+                  <span> Engraving </span>
+                </div>
+                <div style="display: flex">
+                  <div
+                    style="
+                      width: 100%;
+                      height: 200px;
+                      border-top: 1px solid#C9C9C9;
+                    "
+                  >
+                    <div style="padding: 14px 20px">
+                      <div><span style="font-weight: 600">Text</span></div>
+                      <div style="padding-top: 15px"><span>Text :</span></div>
+                      <div
+                        style="
+                          text-align: center;
+                          height: 100px;
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                        "
+                      >
+                        <span>{{custom_design.engraving_text}}</span>
+                      </div>
+                      <div style="display: flex">
+                        <span style="min-width: 20%">Position :</span>
+                        <span>{{custom_design.engraving_position}}</span>
+                      </div>
+                      <div style="display: flex">
+                        <span style="min-width: 20%">Font :</span>
+                        <span>{{custom_design.font}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    style="
+                      width: 100%;
+                      border-top: 1px solid#C9C9C9;
+                      border-left: 1px solid#C9C9C9;
+                    "
+                  >
+                    <div style="padding: 14px 20px">
+                      <div><span style="font-weight: 600">Logo</span></div>
+                      <div
+                        style="
+                          text-align: center;
+                          width: 100px;
+                          height: 100px;
+                          margin-top: 10px;
+                        "
+                      >
+                        <img
+                          style="width: 100%; height: 100%; object-fit: contain"
+                          src="{{custom_design.engraving_logo}}"
+                        />
+                      </div>
+                      <div style="width: 30%; display: flex; padding-top: 10px">
+                        <span style="width: 60%">Position :</span>
+                        <span>{{custom_design.logo_position}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        {{/if}}
+        <tr>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          >
+            {{Tamount}}
+          </td>
+        </tr>
+        {{#if custom_design}}
+        <tr style="page-break-after: always"></tr>
+        {{/if}} {{else if custom_order}}
+        <tr>
+          <td colspan="8" style="text-align: left">
+            <div style="margin-bottom: 40px">
+              <div style="display: flex; padding-left: 20px; margin-top: 30px">
+                <span style="white-space: nowrap; font-weight: 600"
+                  >Design</span
+                >
+              </div>
+              <div style="margin-top: 10px; border: 1px solid#D9D9D9">
+                <div
+                  style="
+                    border-bottom: 1px solid#D9D9D9;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 600;
+                  "
+                >
+                  <span> Concept design </span>
+                </div>
+                <div
+                  style="padding-left: 25px; height: 60px; padding-right: 20px"
+                >
+                  <p>{{custom_design.description}}</p>
+                </div>
+                <div style="display: flex">
+                  {{# if custom_design.canvas_design }}
+                  <div
+                    style="
+                      width: 100%;
+                      height: 220px;
+                      border-top: 1px solid#D9D9D9;
+                    "
+                  >
+                    <div
+                      style="
+                        border-bottom: 1px solid #d9d9d9;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      <span>Sketch</span>
+                    </div>
+                    <div
+                      style="
+                        padding-top: 17px;
+                        width: 150px;
+                        height: 150px;
+                        margin: 0 auto;
+                      "
+                    >
+                      <img
+                        style="width: 100%; height: 100%; object-fit: contain"
+                        src="{{custom_design.canvas_design}}"
+                      />
+                    </div>
+                  </div>
+                  {{else}}
+                  <div
+                    style="
+                      width: 100%;
+                      height: 220px;
+                      border-top: 1px solid#D9D9D9;
+                    "
+                  >
+                    <div
+                      style="
+                        border-bottom: 1px solid #d9d9d9;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      <span>Sketch</span>
+                    </div>
+                    <div
+                      style="
+                        padding-top: 17px;
+                        width: 150px;
+                        height: 150px;
+                        margin: 0 auto;
+                      "
+                    ></div>
+                  </div>
+                  {{/if}} {{# if custom_design.image_design }}
+                  <div
+                    style="
+                      width: 100%;
+                      border-top: 1px solid#D9D9D9;
+                      border-left: 1px solid#D9D9D9;
+                    "
+                  >
+                    <div
+                      style="
+                        border-bottom: 1px solid#D9D9D9;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      <span>Picture</span>
+                    </div>
+                    <div
+                      style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 14px 20px;
+                        margin: auto;
+                      "
+                    >
+                      {{#each custom_design.image_design}}
+                      <img
+                        style="
+                          width: 35%;
+                          aspect-ratio: 1/1;
+                          object-fit: contain;
+                          margin: 0 10px 10px;
+                          margin-right: 3px;
+                        "
+                        src="{{this}}"
+                      />
+                      {{/each}}
+                    </div>
+                  </div>
+                  {{else}}
+                  <div
+                    style="
+                      width: 100%;
+                      border-top: 1px solid#D9D9D9;
+                      border-left: 1px solid#D9D9D9;
+                    "
+                  >
+                    <div
+                      style="
+                        border-bottom: 1px solid#D9D9D9;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      <span>Picture</span>
+                    </div>
+                    <div
+                      style="
+                        padding-top: 17px;
+                        margin: 0 auto;
+                        width: 150px;
+                        height: 150px;
+                      "
+                    ></div>
+                  </div>
+                  {{/if}}
+                  <div
+                    style="
+                      width: 100%;
+                      border-top: 1px solid#D9D9D9;
+                      border-left: 1px solid#D9D9D9;
+                    "
+                  >
+                    <div
+                      style="
+                        border-bottom: 1px solid #d9d9d9;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      <span>Engraving</span>
+                    </div>
+
+                    <div style="padding: 14px 20px">
+                      <div style="display: flex">
+                        <span style="font-weight: 600; width: 40%">Text</span>
+                      </div>
+                      <div style="display: flex">
+                        <span style="width: 40%">Text :</span>
+                        <span>{{custom_design.engraving_text}}</span>
+                      </div>
+                      <div style="display: flex">
+                        <span style="width: 40%">Position : </span>
+                        <span>{{custom_design.engraving_position}} </span>
+                      </div>
+                      <div style="display: flex">
+                        <span style="width: 40%">Font :</span>
+                        <span>{{custom_design.font}}</span>
+                      </div>
+                      {{# if custom_design.engraving_logo }}
+                      <div style="display: flex; padding-top: 10px">
+                        <span style="font-weight: 600; width: 40%">Logo</span>
+                        <img
+                          style="width: 100%; height: 80px; object-fit: contain"
+                          src="{{custom_design.engraving_logo}}"
+                        />
+                      </div>
+                      {{else}}
+                      <div style="display: flex; padding-top: 10px">
+                        <span style="font-weight: 600; width: 40%">Logo</span>
+                      </div>
+                      {{/if}}
+                      <div style="display: flex; padding-top: 20px">
+                        <span style="width: 40%">Position :</span>
+                        <span>{{custom_design.logo_position}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr style="page-break-after: always"></tr>
+        {{/if}} {{#unless @last}} {{# if pageBreak }}
+        <tr style="page-break-after: always"></tr>
+        {{/if}} {{/unless}} {{/each}} {{/if}}
+      </tbody>
+      <tfoot>
+        {{#if mixMatch}} {{else}}
+        <tr style="margin-top: 3px">
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+            "
+          ></td>
+          <td
+            style="
+              border-top: 1px solid #000000;
+              border-bottom: 1px solid #000000;
+              white-space: nowrap;
+            "
+          >
+            {{amount}}
+          </td>
+        </tr>
+        {{/if}}
+      </tfoot>
+    </table>
+    <table style="width: 100%; margin-top: 10px" cellspacing="0">
+      <tbody>
+        <tr>
+          <td style="width: 40%; padding-right: 5px; padding-left: 20px">
+            <table style="width: 100%">
+              <tr>
+                <td style="font-weight: 600">Payment Method</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+              {{#if cash_show}}
+              <tr>
+                <td style="padding-top: 15px">Cash</td>
+                <td style="text-align: right; padding-top: 15px">{{cash}}</td>
+              </tr>
+              {{else}}
+              <tr></tr>
+              {{/if}} {{#if creditCard_show}}
+              <tr>
+                <td>Credit card</td>
+                <td style="text-align: right">{{credit_card}}</td>
+              </tr>
+              {{else}}
+              <tr></tr>
+              {{/if}} {{#if bank_show}}
+              <tr>
+                <td>Bank</td>
+                <td style="text-align: right; width: 40%">{{bank}}</td>
+              </tr>
+              {{else}}
+              <tr></tr>
+              {{/if}} {{#if creditNote_show}}
+              <tr>
+                <td>Credit note</td>
+                <td style="text-align: right">{{credit_notes}}</td>
+              </tr>
+              {{else}}
+              <tr></tr>
+              {{/if}}
+            </table>
+          </td>
+          <td style="width: 20%; padding-left: 20px; padding-right: 5px"></td>
+          <td style="width: 40%">
+            <table style="width: 100%; border-spacing: 0">
+              <tbody>
+                {{#if pural}}
+                <tr>
+                  <td style="font-weight: 600; font-size: 12px">Summary</td>
+                  <td
+                    style="text-align: right; font-weight: 600; font-size: 12px"
+                  >
+                    {{item}} Items
+                  </td>
+                </tr>
+                {{else}}
+                <tr>
+                  <td style="font-weight: 600; font-size: 12px">Summary</td>
+                  <td
+                    style="text-align: right; font-weight: 600; font-size: 12px"
+                  >
+                    {{item}} Item
+                  </td>
+                </tr>
+                {{/if}}
+                <tr>
+                  <td
+                    style="font-weight: 600; font-size: 12px; padding-top: 15px"
+                  >
+                    Total
+                  </td>
+                  <td
+                    style="
+                      text-align: right;
+                      font-weight: 600;
+                      font-size: 12px;
+                      padding-top: 15px;
+                    "
+                  >
+                    {{amount}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Discount</td>
+                  <td style="text-align: right">{{discount}}</td>
+                </tr>
+                <tr>
+                  <td>Labour</td>
+                  <td style="text-align: right">{{labour}}</td>
+                </tr>
+                <tr>
+                  <td>Ship Charges</td>
+                  <td style="text-align: right">{{Ship_Charges}}</td>
+                </tr>
+                <tr style="font-weight: 600">
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td style="text-align: right"></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td style="text-align: right"></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td
+                    style="
+                      padding-top: 8px;
+                      border-top: 1px solid #c9c9c9;
+                      font-weight: 600;
+                    "
+                  >
+                    Grand Total
+                  </td>
+                  <td
+                    style="
+                      padding-top: 8px;
+                      border-top: 1px solid #c9c9c9;
+                      text-align: right;
+                      font-weight: 600;
+                    "
+                  >
+                    {{grandTotal}}
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      border-bottom: 1px solid #c9c9c9;
+                    "
+                  >
+                    Deposit {{deposit_percent}}%
+                  </td>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      border-bottom: 1px solid #c9c9c9;
+                      text-align: right;
+                    "
+                  >
+                    {{diposit}}
+                  </td>
+                </tr>
+                <tr style="font-weight: 600">
+                  <td style="padding-top: 8px">Balance</td>
+                  <td style="text-align: right; padding-top: 8px">{{due}}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="display: flex; padding-left: 20px">
+      <span style="white-space: nowrap; font-weight: 600">Note :</span>
+    </div>
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        margin-top: 38px;
+        padding-left: 20px;
+      "
+    >
+      <div style="text-align: center; padding-top: 38px">
+        <span
+          >Please check the order details and confirm to us by signing. Thank
+          you</span
+        >
+      </div>
+      <div
+        style="
+          padding-bottom: 38px;
+          border-bottom: 1px solid #000;
+          width: 30%;
+          text-align: center;
+        "
+      >
+        <span>Client Signature </span>
+      </div>
+    </div>
+  </body>
+</html>

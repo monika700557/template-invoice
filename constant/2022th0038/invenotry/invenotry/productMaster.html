@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" style="-webkit-print-color-adjust: exact;print-color-adjust: exact;">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+            font-size: 10px;
+        }
+
+        .common-table tbody>tr:nth-child(even) {
+            background-color: #F7F8F9;
+        }
+
+        th,
+        td {
+            vertical-align: top;
+        }
+
+        tfoot td {
+            border-bottom: 1px solid #D9D9D9;
+        }
+
+        .common-table th,
+        .common-table td {
+            padding: 9px 10px;
+        }
+
+        .common-table th {
+            border-bottom: 1px solid #D9D9D9;
+            border-top: 1px solid #D9D9D9;
+        }
+
+        .common-table tfoot td {
+            font-weight: 700;
+        }
+
+        .common-table tr {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;color: #2A2A2A;font-size: 13px;font-family: 'Open Sans', sans-serif;">
+    <table style="width: 100%;padding: 0 20px;">
+        <tbody>
+            <tr>
+                <td style="width:25%; padding: 0 5px; height:75px;text-align: center;color: #fff;">
+                    <div
+                        style="height: 100%;background-color: #F9BC44; border-radius: 10px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                        <span style="display: block;font-weight: 600;margin-bottom: 10px;">SKU</span>
+                        <span style="font-weight: 700;font-size: 20px;">{{SKU}}</span>
+                    </div>
+                </td>
+                <td style="width:25%; padding: 0 5px; height:75px;text-align: center;color: #fff;">
+                    <div
+                        style="height: 100%;background-color:#4699B7;border-radius: 10px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                        <span style="display: block;font-weight: 600;margin-bottom: 10px;">ITEM</span>
+                        <span style="font-weight: 700;font-size: 20px;">{{Item}}</span>
+                    </div>
+                </td>
+                <td style="width:25%; padding: 0 5px;  height:75px;text-align: center;color: #fff;">
+                    <div
+                        style="height: 100%;background-color: #5FBEAA;border-radius: 10px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                        <span style="display: block;font-weight: 600;margin-bottom: 10px;">COLLECTION</span>
+                        <span style="font-weight: 700;font-size: 20px;">{{Collection}}</span>
+                    </div>
+                </td>
+                <td style="width:25%; padding: 0 5px;  height:75px;text-align: center;color: #fff;">
+                    <div
+                        style="height: 100%;background-color: #FF9F40;border-radius: 10px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                        <span style="display: block;font-weight: 600;margin-bottom: 10px;">Variants</span>
+                        <span style="font-weight: 700;font-size: 20px;">{{variant}}</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;">#</th>
+                <th>Img</th>
+                <th>Product Name<br>
+                    <span style="font-size: 9px">Product ID</span>
+                </th>
+                <th></th>
+                <th>SKU</th>
+                <th>Item
+                    <br>
+                    <span style="font-size: 9px">Collection</span>
+                </th>
+                <th><img style="width: 25px;height: 27px; "
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA6CAYAAADspTpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANGSURBVHgB7ZpNbtNAAIWfaQQ7lCO4ggP0CI4QSF3RnoBEiHXhBElOQLLuIuEEhRULhGJuwB4khhtkCQhs3nic4PzYmbHHkZjOJw1pQhP7zTzHzecAt4wARyb9FnV5c8VxgT+YBg/jOY7IUQOnX6MLnOA1fwwLD885xsFpLHAEjhKYq3rGGxk0qvi1EcebtoO3Gjiv75DjpeZTBGs+brPmrQVOv0dXSLJV68IcwdFrY7WtB06/RBE62apGaM4clo9va4Hz+srjtA+7WK25lcAN66uL4Ljkan9GA+7ABkn2ptRmWEkIdf5uhJ3A/xE+sOv4wK7jA7uOD+w6PrDr+MCu4wPXIsE7tM+S4xMaYtN4hLxZYFPB2iHBlEsz4of/JRrSQU3SGyqdLt1Vwn9/rb3TKYP3oUxliObEkE7rQRxn27zOfVlCnfu8nvKptcLpgkon3VI6Ae//4I6cxyJbbfn/AZ6hHnIl5SROsu3NsvbMsCkGBaTZHJgJPqPA6QfO8EmlkRQMOg4eqdnPa37DcQZdCvVlUB2vPYecHM3gWoGz+t6nkQy0jaTAT87+udoJzZrHHIOVkmVY6a9G0HNlghM11qn5wcCs75CrVk/SpZx9eXyrmsvny9cZYntnVdA4e8p1I68t8Juv9UK91j5KA+f1lcdNiGbs1lwd3095d8oxMaivLnOU1HwncPqeO3Rv5w3CBnL2L4MnyivLFV+dZgzra8KIocfFBzYCN6qvLsWaq/raaFEVguMVg7+Vd9Z/aTFsuHOqaQP5xnc3b0/H2vm6ihAFge//lnYdH9h1fGDX8YFdxwd2HR/YdXxg1ykGlh/GBdpnSf8ksp+S5mJdk/V2do3HRwq3oKXPqWluJHv/hHqJgrVFDKV64tUDe51WQQbU9cq7Gw4o13rlKpXB+7An8JXXHiivXaTSWubBzbzyJvKLoYPgcblF3NjerNRsmiDFoHRZey/L6Hlp85ov8/pOivXVJau5+ZWLGMpdVX75VPvKA1e7m32JNDg4+wfrq71NvZoLF
+                        CTdIYyvLVUc30b1NdrmLBpBibiiYJTNUV57oN+i2pdLCzXv5qJ9ghbZqnkMebVi0LxF5juyiNr+nvTm9tRprDZ/AStZSoNQVvmqAAAAAElFTkSuQmCC">
+                </th>
+                <th>Reorder Point</th>
+                <th>Reorder Qty</th>
+                <th style="padding-right: 10px;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products }}
+            <tr>
+                <td style="padding-left: 10px;vertical-align: middle;">{{sr_no}}</td>
+                {{#if main_image}}
+                <td style="width:45px;padding:2px;vertical-align: middle;"><img
+                        style="width: 100%; height: 100%; display: block;object-fit: contain;"
+                        src={{main_image}}
+                        alt=""></td>
+                        {{else}}
+                        <td style="width:45px;padding:2px;vertical-align: middle;"></td>
+                {{/if}}
+                <td>{{name}}<br>
+                    <span style="font-size: 9px;color: #6A6A6A;"> {{ID}} </span>
+                </td>
+                <td style="width: 20px;vertical-align: middle;">
+                    {{#if variant}}
+                    <img style="width: 100%; height: 100%;object-fit: contain;"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA6CAYAAADspTpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANGSURBVHgB7ZpNbtNAAIWfaQQ7lCO4ggP0CI4QSF3RnoBEiHXhBElOQLLuIuEEhRULhGJuwB4khhtkCQhs3nic4PzYmbHHkZjOJw1pQhP7zTzHzecAt4wARyb9FnV5c8VxgT+YBg/jOY7IUQOnX6MLnOA1fwwLD885xsFpLHAEjhKYq3rGGxk0qvi1EcebtoO3Gjiv75DjpeZTBGs+brPmrQVOv0dXSLJV68IcwdFrY7WtB06/RBE62apGaM4clo9va4Hz+srjtA+7WK25lcAN66uL4Ljkan9GA+7ABkn2ptRmWEkIdf5uhJ3A/xE+sOv4wK7jA7uOD+w6PrDr+MCu4wPXIsE7tM+S4xMaYtN4hLxZYFPB2iHBlEsz4of/JRrSQU3SGyqdLt1Vwn9/rb3TKYP3oUxliObEkE7rQRxn27zOfVlCnfu8nvKptcLpgkon3VI6Ae//4I6cxyJbbfn/AZ6hHnIl5SROsu3NsvbMsCkGBaTZHJgJPqPA6QfO8EmlkRQMOg4eqdnPa37DcQZdCvVlUB2vPYecHM3gWoGz+t6nkQy0jaTAT87+udoJzZrHHIOVkmVY6a9G0HNlghM11qn5wcCs75CrVk/SpZx9eXyrmsvny9cZYntnVdA4e8p1I68t8Juv9UK91j5KA+f1lcdNiGbs1lwd3095d8oxMaivLnOU1HwncPqeO3Rv5w3CBnL2L4MnyivLFV+dZgzra8KIocfFBzYCN6qvLsWaq/raaFEVguMVg7+Vd9Z/aTFsuHOqaQP5xnc3b0/H2vm6ihAFge//lnYdH9h1fGDX8YFdxwd2HR/YdXxg1ykGlh/GBdpnSf8ksp+S5mJdk/V2do3HRwq3oKXPqWluJHv/hHqJgrVFDKV64tUDe51WQQbU9cq7Gw4o13rlKpXB+7An8JXXHiivXaTSWubBzbzyJvKLoYPgcblF3NjerNRsmiDFoHRZey/L6Hlp85ov8/pOivXVJau5+ZWLGMpdVX75VPvKA1e7m32JNDg4+wfrq71NvZoLF
+                        CTdIYyvLVUc30b1NdrmLBpBibiiYJTNUV57oN+i2pdLCzXv5qJ9ghbZqnkMebVi0LxF5juyiNr+nvTm9tRprDZ/AStZSoNQVvmqAAAAAElFTkSuQmCC">
+                    {{else if design}}
+                    <img style="width: 100%; height: 100%;object-fit: contain;"
+                        src="data:image/png;base64,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">
+                    {{else}}
+                    <span ></span>
+                    {{/if}}
+                </td>
+                <td>{{SKU}}</td>
+                <td>{{item_name}} <br>
+                    <span style="font-size: 9px;color: #6A6A6A;">{{collection_name}} </span>
+                </td>
+                <td>{{VariantsCount}}</td>
+
+                <td>{{ReorderPoints}}</td>
+                <td>{{ReorderQuantitys}}</td>
+                <td>{{Status}}</td>
+
+
+            </tr>
+            {{#unless @last}}
+            {{# if pageBreak }}
+                <tr>
+                    <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">Sub Total</td>
+                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                        {{itemAt @root.subTotalQty (  subTotalQtyIndex) }}</td>
+                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                    <td style="padding-right: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                </tr>
+                <tr style="page-break-after: always;"> </tr>
+                {{/if}}
+                {{/unless}}
+            {{/each}}   
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Total</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{totalQTY}}</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="padding-right: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+</html>

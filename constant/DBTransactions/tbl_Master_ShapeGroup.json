@@ -1,0 +1,122 @@
+[
+  {
+    "_id": "637c8a1bd3001af825b7195a",
+    "name": "Round",
+    "code": "Round",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "logo": "https://gis247.s3.us-east-2.amazonaws.com/Diamond/round-diamond.svg",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "637c8a2fd3001af825b7195b",
+    "name": "Oval",
+    "code": "Oval",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "logo": "https://gis247.s3.us-east-2.amazonaws.com/Diamond/oval-diamond.svg",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00 "
+  },
+  {
+    "_id": "637c8a3dd3001af825b7195c",
+    "name": "Pear",
+    "code": "Pear",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "logo": "https://gis247.s3.us-east-2.amazonaws.com/Diamond/pear-diamond.svg",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "637c8a4cd3001af825b7195d",
+    "name": "Princess",
+    "code": "Princess",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "logo": "https://gis247.s3.us-east-2.amazonaws.com/Diamond/princess-diamond.svg",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "637c8a57d3001af825b7195e",
+    "name": "Radiant",
+    "code": "Radiant",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "logo": "https://gis247.s3.us-east-2.amazonaws.com/Diamond/radiant-diamond.svg",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "637c8a62d3001af825b7195f",
+    "name": "Heart",
+    "code": "Heart",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "logo": "https://gis247.s3.us-east-2.amazonaws.com/Diamond/heart-diamond.svg",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "637c8a69d3001af825b71960",
+    "name": "Emerald",
+    "code": "Emerald",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "logo": "https://gis247.s3.us-east-2.amazonaws.com/Diamond/emerald-diamond.svg",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "637c8a7ad3001af825b71961",
+    "name": "Marquise",
+    "code": "Marquise",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "logo": "https://gis247.s3.us-east-2.amazonaws.com/Diamond/marquise-diamond.svg",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "637c8a84d3001af825b71962",
+    "name": "Cushion",
+    "code": "Cushion",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "logo": "https://gis247.s3.us-east-2.amazonaws.com/Diamond/cushion-diamond.svg",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "637c8a8fd3001af825b71963",
+    "name": "Fancy",
+    "code": "Fancy",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "logo": "https://gis247.s3.us-east-2.amazonaws.com/Diamond/other-diamond.svg",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  }
+]

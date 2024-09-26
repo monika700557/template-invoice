@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./localserv/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./localserv/ssl/:/etc/nginx/ssl/
+
+
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: ./docker-fe/Dockerfile
+  #   # develop:
+  #   #   watch:
+  #   #     - action: sync
+  #   #       path: ./GIS-Frontend-Web
+  #   #       ignore:
+  #   #         - node_modules/
+  #   #       target: /var/www/GIS-Frontend-Web
+  #   #     - action: rebuild
+  #   volumes:
+  #     - frontend_volume:/var/www/GIS-Frontend-Web:delegated
+  #   environment:
+  #     - CHOKIDAR_USEPOLLING=true
+
+
+
+      # - ./nginx/conf.d/gispos.conf:/etc/nginx/conf.d/gispos.conf
+      # - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+
+
+    # entrypoint: ["/usr/local/bin/custom-entrypoint.sh"]
+volumes:
+  frontend_volume:
+    driver: local
+    name: frontend_volume
+    driver_opts:
+      type: none
+      device: ./GIS-Frontend-Web
+      o: bind

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" style="-webkit-print-color-adjust: exact;print-color-adjust: exact;">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+        }
+        .common-table tbody>tr:nth-child(even) {
+            background-color: #F7F8F9;
+        }
+
+        th,
+        td {
+            vertical-align: top;
+        }
+
+        tfoot td {
+            border-bottom: 1px solid #D9D9D9;
+        }
+
+        .common-table th,
+        .common-table td {
+            padding: 9px 0;
+        }
+
+        .common-table th {
+            border-bottom: 1px solid #D9D9D9;
+            border-top: 1px solid #D9D9D9;
+        }
+
+        .common-table tfoot td {
+            font-weight: 700;
+        }
+ 
+        .common-table tr {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;color: #2A2A2A;font-size: 13px;font-family: 'Open Sans', sans-serif;">
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;">#</th>
+                <th>Date</th>
+                <th>Ref</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Chanel</th>
+                <th>User</th>
+                <th>Withdraw</th>
+                <th>Deposit</th>
+                <th style="padding-right: 10px;">Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#if show}}
+                <tr>
+                    <td style="padding-left: 10px;"></td>
+                    <td>{{data.op_date}}<br><span style="font-size: 12px;"></span>
+                    </td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>{{data.description}}</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{data.withdraw}}</td>
+                    <td>{{data.deposit}}</td>
+                    <td>{{data.netBalance}}</td>
+                </tr>
+            {{/if}} 
+            {{#each products}}
+                <tr>
+                    <td style="padding-left: 10px;">{{sr_no}}</td>
+                    <td>{{op_date}}<br><span style="font-size: 12px;">{{time}}</span>
+                    </td>
+                    <td>{{Ref}}</td>
+                    <td>{{Type}}</td>
+                    <td>{{description}}</td>
+                    <td>{{channel}}</td>
+                    <td>{{user}}</td>
+                    <td>{{withdraw}}</td>
+                    <td>{{deposit}}</td>
+                    <td>{{netBalance}}</td>
+                </tr>
+                {{#unless @last}}
+                {{# if pageBreak }}
+                    <tr>
+                        <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">Sub Total</td>
+                        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                            {{itemAt @root.subTotalswithdraw ( subTotalswithdrawIndex) }}</td>
+                        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                            {{itemAt @root.subTotalsdeposit ( subTotalsdepositIndex) }}</td>
+                        <td style="padding-right: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                            {{itemAt @root.subTotalnet ( subTotalnetIndex) }}</td>
+                    </tr>
+                    <tr style="page-break-after: always;"></tr>
+                {{/if}}
+                {{/unless}}    
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Total</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                    {{withdraw_total}}</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                    {{deposit_total}}</td>
+                <td style="padding-right: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                    {{netBalance_total}}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+</html>

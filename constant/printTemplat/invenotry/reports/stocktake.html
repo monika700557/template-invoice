@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" style="-webkit-print-color-adjust: exact;print-color-adjust: exact;">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Open Sans', sans-serif;
+        }
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+            font-size: 10px;
+        }
+
+        .common-table tbody>tr:nth-child(even) {
+            background-color: #F7F8F9;
+        }
+
+        th,
+        td {
+            vertical-align: top;
+        }
+
+        tfoot td {
+            border-bottom: 1px solid #D9D9D9;
+        }
+
+        .common-table th,
+        .common-table td {
+            padding: 9px 10px;
+        }
+
+        .common-table th {
+            border-bottom: 1px solid #D9D9D9;
+            border-top: 1px solid #D9D9D9;
+        }
+
+        .common-table tfoot td {
+            font-weight: 700;
+        }
+        .common-table tr {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;color: #2A2A2A;font-size: 13px;">
+
+
+
+
+    <table style="width: 100%;padding: 0 20px;">
+        <tbody>
+            <tr>
+
+                <td style="width:25%;">
+
+                </td>
+                <td style="width:25%; padding: 0 5px;  height:75px;text-align: center;color: #fff;">
+                    <div
+                        style="height: 100%;background-color: #61D6D0;border-radius: 10px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                        <span style="display: block;font-weight: 600;margin-bottom: 10px;">CUSTOMER</span>
+                        <span style="font-weight: 700;font-size: 20px;">{{user}}</span>
+                    </div>
+                </td>
+                <td style="width:25%; padding: 0 5px;  height:75px;text-align: center;color: #fff;">
+                    <div
+                        style="height: 100%;background-color: #97BFD9;border-radius: 10px;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                        <span style="display: block;font-weight: 600;margin-bottom: 10px;">LOCATIONS</span>
+                        <span style="font-weight: 700;font-size: 20px;">{{location}}</span>
+                    </div>
+                </td>
+                <td style="width:25%;">
+
+                </td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;">#</th>
+                <th>Transfer Date
+
+
+
+                    <br> <span style="font-size: 9px"> Time</span>
+                </th>
+
+                <th>Stock take No
+
+
+                    <br> <span style="font-size: 9px">User</span>
+                </th>
+                <th>Locations
+
+                </th>
+                <th>Total
+
+                </th>
+                <th>Scanned <br>
+
+                </th>
+                <th>Unscanned</th>
+
+
+
+                <th style="padding-right: 10px;">Conflict
+                    /Unknown</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td style="padding-left: 10px;">1</td>
+                <td>{{Pdate}}
+                    <br>
+                    <span style="font-size: 9px;color: #6A6A6A;">{{time}}</span>
+                </td>
+
+                <td>{{st_no}}
+                    <br><span style="font-size: 9px;color: #6A6A6A;">{{user_name}}</span>
+                </td>
+                <td>{{location}}
+                </td>
+                <td>{{total}}<br>
+                </td>
+                <td>{{scanned}}</td>
+                <td>{{unscanned}}</td>
+                <td>{{conflictAndUnknown}}</td>
+
+
+            </tr>
+            {{#unless @last}}
+            {{# if pageBreak }}
+                                <tr>  
+                                    <td colspan="2" style="text-align: left;padding-left: 10px;font-weight: bold;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Sub Total</td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                                    
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                                        {{itemAt @root.subTotals ( subTotalIndex) }}
+                                    </td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                                        {{itemAt @root.subScannedTotal ( subscannedTotalIndex) }}
+                                    </td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                                        {{itemAt @root.subUnscannedTotal ( subunscannedTotalIndex) }}
+                                    </td>
+                                    <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                                        {{itemAt @root.subconflictAndUnknownTotal ( subconflictAndUnknownTotalIndex) }}
+                                    </td>
+                                    
+                                </tr>
+                                <tr style="page-break-after: always;"> </tr>
+                            {{/if}}
+                        {{/unless}}
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+
+            </tr>
+        </tfoot>
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Total</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{total}}</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{scannedTotal}}</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{unscannedTotal}}</td>
+
+                <td style="padding-right: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{conflictAndUnknownTotal}}</td>
+
+
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+</html>

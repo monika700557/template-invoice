@@ -1,0 +1,10 @@
+[
+  {
+    "_id": "634f694d17ae947408110e41",
+    "name": "Tax",
+    "label": "Tax",
+    "rate": "0",
+    "type": "On Total",
+    "is_delete": 0
+  }
+]

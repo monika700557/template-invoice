@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .common-table {
+      text-align: center;
+      width: 100%;
+      border-spacing: 0;
+      font-size: 10px;
+    }
+
+    .common-table tbody>tr:nth-child(even) {
+      background-color: #f7f8f9;
+    }
+
+    th,
+    td {
+      vertical-align: top;
+    }
+
+    tfoot td {
+      border-bottom: 1px solid #d9d9d9;
+    }
+
+    .common-table th,
+    .common-table td {
+      padding: 9px 10px;
+    }
+
+    .common-table th {
+      border-bottom: 1px solid #d9d9d9;
+      border-top: 1px solid #d9d9d9;
+    }
+
+    .common-table tfoot td {
+      font-weight: 700;
+    }
+
+    .common-table tr {
+      break-inside: avoid;
+    }
+  </style>
+</head>
+
+<body style="
+      margin: 0;
+      color: #2a2a2a;
+      font-size: 13px;
+      font-family: 'Open Sans', sans-serif;
+    ">
+  <table style="width: 100%; padding: 0 8px;text-transform: uppercase;">
+    <tbody>
+      <tr>
+        <td style="
+              width: 16.8%; 
+              padding: 0 5px;
+              height: 75px;
+              text-align: center;
+              color: #fff;
+            ">
+          <div style="
+                height: 100%;
+                background-color: #5fbeaa;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+              ">
+            <span style="display: block; font-weight: 600; margin-top: 2px;">
+              TOTAL
+            </span>
+            <span style="display: block; font-weight: 600; margin-bottom: 4px;">
+              CUSTOMER
+            </span>
+            <span style="font-weight: 700; font-size: 20px; margin-bottom:2px">{{uppercount.customer}}</span>
+          </div>
+        </td>
+        <td style="
+              width: 16.8%;
+              padding: 0 5px;
+              height: 75px;
+              text-align: center;
+              color: #fff;
+            ">
+          <div style="
+                height: 100%;
+                background-color: #f9bc44;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+              ">
+
+            <span style="display: block; font-weight: 600; margin-top: 2px;">
+              TOTAL
+            </span>
+            <span style="display: block; font-weight: 600; margin-bottom: 4px;">
+              Wishlist
+            </span>
+            <span style="font-weight: 700; font-size: 20px; margin-bottom:2px">{{uppercount.wishlist}}</span>
+          </div>
+        </td>
+        <td style="
+              width: 16.8%;
+              padding: 0 5px;
+              height: 75px;
+              text-align: center;
+              color: #fff;
+            ">
+          <div style="
+                height: 100%;
+                background-color: #f08585;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+              ">
+
+            <span style="display: block; font-weight: 600; margin-top: 2px;">
+              TOTAL
+            </span>
+            <span style="display: block; font-weight: 600; margin-bottom: 4px;">
+              Custom
+            </span>
+            <span style="font-weight: 700; font-size: 20px; margin-bottom:2px">{{uppercount.custom}}</span>
+          </div>
+        </td>
+        <td style="
+              width: 16.8%;
+              padding: 0 5px;
+              height: 75px;
+              text-align: center;
+              color: #fff;
+            ">
+          <div style="
+                height: 100%;
+                background-color: #a99bbd;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+              ">
+
+
+            <span style="display: block; font-weight: 600; margin-top: 2px;">
+              TOTAL
+            </span>
+            <span style="display: block; font-weight: 600; margin-bottom: 4px;">
+              REPAIR
+            </span>
+            <span style="font-weight: 700; font-size: 20px;margin-bottom:2px">{{uppercount.repair}}</span>
+          </div>
+        </td>
+        <td style="
+              width: 16.8%;
+              padding: 0 5px;
+              height: 75px;
+              text-align: center;
+              color: #fff;
+            ">
+          <div style="
+                height: 100%;
+                background-color: #a4a4a4;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+              ">
+
+            <span style="display: block; font-weight: 600; margin-top: 2px;">
+              TOTAL
+            </span>
+            <span style="display: block; font-weight: 600; margin-bottom: 4px;">
+              Ex/Rf
+            </span>
+            <span style="font-weight: 700; font-size: 20px;margin-bottom:2px">{{uppercount.exchange}}</span>
+          </div>
+        </td>
+        <td style="
+              width: 16.8%;
+              padding: 0 5px;
+              height: 75px;
+              text-align: center;
+              color: #fff;
+            ">
+          <div style="
+                height: 100%;
+                background-color: #5cc7c1;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+              ">
+
+            <span style="display: block; font-weight: 600; margin-top: 2px;">
+              TOTAL
+            </span>
+            <span style="display: block; font-weight: 600; margin-bottom: 4px;">
+              SALES
+            </span>
+            <span style="font-weight: 700; font-size: 20px;margin-bottom:2px">{{uppercount.sales}}</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="common-table" style="margin-top: 25px;">
+    <thead style="display: table-header-group; break-inside: avoid;">
+      <tr>
+        <th style="padding-left: 10px;">#</th>
+        <th>Customer ID</th>
+        <th>Customer name</th>
+        <th>Group</th>
+        <th>Mobile number</th>
+        <th>Wishlist</th>
+        <th>Custom Order</th>
+        <th>Repair Order</th>
+        <th>Ex/Rf</th>
+        <th style="padding-right: 10px;">Sales</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products }}
+      <tr>
+        <td style="padding-left: 10px;">{{sr_no}}</td>
+        <td>{{customer_id}}</td>
+        <td>{{customer_name}}</td>
+        <td>{{customer_group}}</td>
+        <td>{{customer_mobile}}</td>
+        <td>{{wishlist}}</td>
+        <td>{{custom}}</td>
+        <td>{{repair}}</td>
+        <td>{{exchange}}</td>
+        <td>{{sales}}</td>
+      </tr>
+      {{#unless @last}}
+      {{# if pageBreak }}
+      <tr>
+        <td colspan="2"
+          style="text-align: left;padding-left: 10px;font-weight: bold;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+          Sub Total</td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+          {{itemAt @root.subTotalW ( subTotalWIndex) }}</td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+          {{itemAt @root.subTotalC ( subTotalCIndex) }}</td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+          {{itemAt @root.subTotalR ( subTotalRIndex) }}</td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+          {{itemAt @root.subTotalE ( subTotalEIndex) }}
+        </td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+          {{itemAt @root.subTotalS ( subTotalSIndex) }} </td>
+      </tr>
+      <tr style="page-break-after: always;"> </tr>
+      {{/if}}
+      {{/unless}}
+      {{/each}}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"
+          style="text-align: left; padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+          Total
+        </td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{lowercount.wishlist}}</td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{lowercount.custom}}</td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{lowercount.repair}}</td>
+        <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{lowercount.exchange}}</td>
+        <td style="padding-right: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+          {{lowercount.sales}}</td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+
+</html>

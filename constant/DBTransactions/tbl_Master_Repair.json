@@ -1,0 +1,112 @@
+[
+  {
+    "_id": "60e93e86c3363f16a9548f12",
+    "name": "Polishing",
+    "code": "Polishing",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "60e93e9476cbfd62396f15b3",
+    "name": "Ring Re-sizing",
+    "code": "Ring Re-sizing",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00 "
+  },
+  {
+    "_id": "60e93ea00e55ff1e5f7a5263",
+    "name": "Chain and Clasp Repair",
+    "code": "Chain and Clasp Repair",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "60e93ead6840dc51cd44c5e2",
+    "name": "Finishing",
+    "code": "Finishing",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "60e93eb86f02161914258392",
+    "name": "Reshap Bent Ring",
+    "code": "Reshap Bent Ring",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "60e93ec64dd3335ec3476da2",
+    "name": "Laser Spot Solder",
+    "code": "Laser Spot Solder",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "60e93ecf5b131c348f6c9547",
+    "name": "Plating",
+    "code": "Plating",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "60e93ef4ad15041a433c0112",
+    "name": "Stone Replacement",
+    "code": "Stone Replacement",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "60e93f15940c3416e648f2c2",
+    "name": "Remodel Jewelery",
+    "code": "Remodel Jewelery",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  },
+  {
+    "_id": "60e93f2008b48819c05a3392",
+    "name": "Prong Repair",
+    "code": "Prong Repair",
+    "Status": "1",
+    "from": "",
+    "to": "",
+    "is_delete": 0,
+    "createdAt": "2021-07-16T15:36:00.000+00:00",
+    "updatedAt": "2021-07-16T15:36:00.000+00:00"
+  }
+]

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" style="-webkit-print-color-adjust: exact;print-color-adjust: exact;">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+        }
+
+        .common-table tbody>tr:nth-child(even) {
+            background-color: #F7F8F9;
+        }
+
+        th,
+        td {
+            vertical-align: top;
+        }
+
+        tfoot td {
+            border-bottom: 1px solid #D9D9D9;
+        }
+
+        .common-table th,
+        .common-table td {
+            padding: 9px 0;
+        }
+
+        .common-table th {
+            border-bottom: 1px solid #D9D9D9;
+            border-top: 1px solid #D9D9D9;
+        }
+
+        .common-table tfoot td {
+            font-weight: 700;
+        }
+
+        .common-table tr {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;color: #2A2A2A;font-size: 13px;font-family: 'Open Sans', sans-serif;">
+    <table class="common-table" style="margin-top: 25px;">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 10px;">#</th>
+                <th>Ref No</th>
+                <th>VR Type</th>
+                <th>Currency</th>
+                <th>Opening</th>
+                <th>Redeemed</th>
+                <th>Balance</th>
+                <th>Dr/Cr</th>
+                <th style="padding-right: 10px;">Remark</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products }}
+            <tr>
+                <td style="padding-left: 10px;">{{sr_no}}</td>
+                <td>{{name}}</td>
+            </tr>
+            {{#each this.data}}
+            <tr>
+                <td style="padding-left: 10px;"></td>
+                <td>{{this.order_no}}</td>
+                <td>{{this.voucher_no}}</td>
+
+
+                <td>{{this.currency}}</td>
+                <td>{{this.formated_opening_balance}}</td>
+                <td style="color: #FFB256;">{{this.formated_redeem}}</td>
+                <td style="color: #97BFD9;">{{this.formated_remaining}}</td>
+                <td>{{this.debAndcr}}</td>
+                <td>{{this.remark}}</td>
+            </tr>
+            {{/each}}
+            {{#unless @last}}
+        {{# if pageBreak }}
+        
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">Sub Total</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                    {{itemAt @root.subTotalsOP ( subTotalsOPIndex) }}</td>
+                <td style="color: #FFB256;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                    {{itemAt @root.subTotalsR ( subTotalsRIndex) }}</td>
+                <td style="color: #97BFD9;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;font-weight: bold;">
+                    {{itemAt @root.subTotalRB ( subTotalRBIndex) }}</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="padding-right: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            </tr>
+        
+        <tr style="page-break-after: always;"> </tr>
+        {{/if}}
+        {{/unless}}
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Total</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{total_op}}</td>
+                <td style="color: #FFB256;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{total_redeem}}</td>
+                <td style="color: #97BFD9;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{total_remaining}}</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="padding-right: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+</html>

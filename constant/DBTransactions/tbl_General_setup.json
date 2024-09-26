@@ -1,0 +1,40 @@
+{
+    "Activate_loyalty_points": "0",
+    "ACTIVE_COUPON": "0",
+    "Users_to_enter_PIN_for_every_sale": "1",
+    "Product_master_display_cost": "1",
+    "Cash_Register_close_every_day": "0",
+    "Allow_user_manually": "0",
+    "Already_exchange_item": "0",
+    "Switch_between_user": "0",
+    "Every_customer_must": "0",
+    "Allow_processing_Refund": "0",
+    "Prompt_to_enter_delivery": "0",
+    "Cashier_to_required_manager_permission": "0",
+    "logistic_status": "1",
+    "POS_partial_payment": "1",
+    "Low_Stock_Notification_Email": "1",
+    "customOrder_delivery": {
+      "status": "1",
+      "weeks": "12"
+    },
+    "repairOrder_delivery": {
+      "status": "1",
+      "weeks": "4"
+    }, 
+    "POS_change_price": "0",
+    "purchaseOrder_delivery": {
+      "status": "1",
+      "weeks": "10"
+    },
+    "allowWarehouse": "1",
+    "Template_with_Image": "0",
+    "productChoice": "1", 
+    "reserve_delivery": {
+      "status": "1",
+      "weeks": "4"
+    },
+    "servicelabers": "1",
+    "isPark": "0",
+    "isQuotation": "1"
+  }

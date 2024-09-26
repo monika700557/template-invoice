@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" style="-webkit-print-color-adjust: exact;print-color-adjust: exact;">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+        }
+
+        .common-table tbody>tr:nth-child(even) {
+            background-color: #F7F8F9;
+        }
+
+        th,
+        td {
+            vertical-align: top;
+        }
+
+        .common-table th,
+        .common-table td {
+            padding: 9px 5px;
+        }
+
+        .common-table th {
+            border-bottom: 1px solid #2A2A2A;
+            border-top: 1px solid #2A2A2A;
+        }
+
+        .common-table tfoot td {
+            font-weight: 700;
+        }
+
+        .common-table tr {
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;color: #2A2A2A;font-size: 12px;font-family: 'Open Sans', sans-serif;">
+   {{#if custom}}
+    <table class="common-table" style="margin-top: 25px;">
+
+        <tbody>
+            {{#each print_custom}}
+            {{#each this.itemrow}}
+            {{#if this.custom_order}}
+            <tr>
+                <td style="padding-left: 10px; vertical-align: middle;">{{this.no}}</td>
+                {{#if this.main_image}}
+                <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                        src="{{this.main_image}}"
+                        alt=""></td>
+                {{else}}
+                <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                            src=""
+                            alt=""></td>
+                {{/if}}
+                <td>{{this.SKU}}<br><span style="color:#A4A4A4">{{this.stock_id}}</span></td>
+                <td style=" width: 190px; text-align: left;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;height: 45px;">{{this.Description}}</td>
+                <td></td>
+                <td>{{this.Qty}}</td>
+                <td style="text-align:right">{{this.formatted_price}}</td>
+                <td>{{this.discount_amount}}</td>
+                <td style="text-align:right">{{this.formatted_price}}</td>
+            </tr>
+            {{/if}}
+            {{#if this.mix_match_item}}
+            <tr>
+                <td style="padding-left: 10px; vertical-align: middle;">{{this.no}}</td>
+                {{#if main_image}}
+                <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                        src="{{this.main_image}}"
+                        alt=""></td>
+                {{else}}
+                <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                            src=""
+                            alt=""></td>
+                {{/if}}
+                <td>{{this.SKU}}<br><span style="color:#A4A4A4">{{this.stock_id}}</span></td>
+                <td style=" width: 190px; text-align: left;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;height: 45px;">{{this.Description}}</td>
+                <td></td>
+                <td>{{this.Qty}}</td>
+                <td style="text-align:right">{{this.formatted_price}}</td>
+                <td>{{this.discount_amount}}</td>
+                <td style="text-align:right">{{this.formatted_price}}</td>
+            </tr>
+            {{/if}}
+            {{#if this.mixmatch}}
+            
+            <tr>
+                <td style="padding-left: 10px; vertical-align: middle;"></td>
+                {{#if diamond_img}}
+                <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                        src="{{this.diamond_img}}"
+                        alt=""></td>
+                {{else}}
+                <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                            src=""
+                            alt=""></td>
+                {{/if}}
+                <td><br><span style="color:#A4A4A4">{{this.diamond_StockID}}</span></td>
+                <td style="text-align: left;">{{this.diamond_name}}</td>
+                <td></td>
+                <td>{{this.diamond_Pcs}}</td>
+                <td style="text-align:right">{{this.diamond_TagPrice_formatted}}</td>
+                <td>{{this.discount_amount}}</td>
+                <td style="text-align:right">{{this.diamond_TagPrice_formatted}}</td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            <tr style="background: #FFDFBA;">
+                <td></td>
+                <td></td>
+                <td colspan="2" style="text-align:left;line-height: 20px;"><b>Invoice</b> : {{invoice.invoice}}<br>
+                    <span> <b>RefNo</b> :{{invoice.RefNo}}</span><br>
+                    <span><b>Customer name </b>: {{invoice.customer}}</span><br>
+                    <span><b>Country</b> : {{invoice.country}}</span><br>
+                    <span style="text-decoration: underline;"><b>Payment Method</b></span> <br>
+                    {{#if invoice.cash}}
+                    <span><b>Cash</b> : {{invoice.cash}}</span><br>
+                    {{/if}}
+                    {{#if invoice.bank}}
+                    <span><b>Bank</b> : {{invoice.bank}}</span><br>
+                    {{/if}}
+                    {{#if invoice.card}}
+                    <span><b>Credit Card</b> : {{invoice.card}}</span><br>
+                    {{/if}}
+                    {{#if invoice.credit_note}}
+                    <span><b>Credit Note/Deposit</b> : {{invoice.credit_note}}</span><br>
+                    {{/if}}
+
+                </td>
+                <td>Total</td>
+                <td>{{invoice.qty}}</td>
+                <td style="text-align:right; line-height: 25px;">{{invoice.base_amount}}<br>
+                    <b>Labour</b> <br>
+                    <b>Ship Charges</b> <br>
+                    <b style="color:#FF0000">Discount on Total Sales</b> <br>
+                    <b>Net Sales</b>
+
+                </td>
+                <td style="line-height: 25px;">{{invoice.total_dis}}</td>
+                <td style="text-align:right;  line-height: 26px;"> {{invoice.base_amount}}<br>
+                    <span>{{invoice.labour}}</span> <br>
+                    <span>{{invoice.Ship_Charges}}</span> <br>
+                    <span style="color:#FF0000 ;">({{invoice.discount}})</span><br>
+
+                    <span style="border-top: 1px solid #FF0000; font-weight: 600; display: inline-block;"> {{invoice.grand_total}}</span>
+                </td>
+            </tr>
+            {{#unless @last}}
+            {{# if pageBreak }}
+            <tr style="font-weight: bold;">
+                <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Sub Total</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                    {{itemAt @root.subTotalCustomQTy ( subTotalCustomQTyIndex) }}</td>
+                <td style="text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="padding-right: 10px;text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                    {{itemAt @root.subTotalCustom ( subTotalCustomValueIndex) }}</td>
+            </tr>
+            <tr style="page-break-after: always;"> </tr>
+            {{/if}}
+                    {{/unless}}
+            {{/each}}
+           
+        </tbody>
+        <tfoot>
+            <tr style="font-weight: bold;">
+                <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Sub Total</td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{customFinalQty}}</td>
+                <td style="text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+                <td style="padding-right: 10px;text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{customAmount}}</td>
+            </tr>
+            <tr style="page-break-after: always;"> </tr>
+        </tfoot>
+    </table>
+    {{/if}}
+
+    {{#if exchange}}
+ <table class="common-table" style="margin-top: 25px;">
+
+    <tbody>
+        {{#each print_exchange}}
+        {{#each this.itemrow}}
+        <tr>
+            <td style="padding-left: 10px; vertical-align: middle;">{{this.no}}</td>
+            {{#if this.main_image}}
+            <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                    src="{{this.main_image}}"
+                    alt=""></td>
+            {{else}}
+            <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                        src=""
+                        alt=""></td>
+            {{/if}}
+            <td>{{this.SKU}}<br><span style="color:#A4A4A4">{{this.stock_id}}</span></td>
+            <td style=" width: 190px; text-align: left;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;height: 45px;">{{this.Description}}</td>
+            <td></td>
+            <td>{{this.Qty}}</td>
+            <td style="text-align:right">{{this.formatted_price}}</td>
+            <td>{{this.discount_amount}}</td>
+            <td style="text-align:right">{{this.formatted_price}}</td>
+        </tr>
+        {{/each}}
+        <tr style="background: #FFF2BA;">
+            <td></td>
+            <td></td>
+            <td colspan="2" style="text-align:left;line-height: 20px;"><b>Invoice</b> : {{invoice.invoice}}<br>
+                <span> <b>RefNo</b> :{{invoice.RefNo}}</span><br>
+                <span><b>Customer name </b>: {{invoice.customer}}</span><br>
+                <span><b>Country</b> : {{invoice.country}}</span><br>
+                <span style="text-decoration: underline;"><b>Payment Method</b></span> <br>
+                {{#if invoice.cash}}
+                <span><b>Cash</b> : {{invoice.cash}}</span><br>
+                {{/if}}
+                {{#if invoice.bank}}
+                <span><b>Bank</b> : {{invoice.bank}}</span><br>
+                {{/if}}
+                {{#if invoice.card}}
+                <span><b>Credit Card</b> : {{invoice.card}}</span><br>
+                {{/if}}
+                {{#if invoice.credit_note}}
+                <span><b>Credit Note/Deposit</b> : {{invoice.credit_note}}</span><br>
+                {{/if}}
+
+            </td>
+            <td>Total</td>
+            <td>{{invoice.qty}}</td>
+            <td style="text-align:right; line-height: 25px;">{{invoice.base_amount}}<br>
+                <b>Labour</b> <br>
+                <b>Ship Charges</b> <br>
+                <b style="color:#FF0000">Discount on Total Sales</b> <br>
+                <b>Net Sales</b>
+
+            </td>
+            <td style="line-height: 25px;">{{invoice.total_dis}}</td>
+            <td style="text-align:right;  line-height: 26px;"> {{invoice.base_amount}}<br>
+                <span>{{invoice.labour}}</span> <br>
+                <span>{{invoice.Ship_Charges}}</span> <br>
+                <span style="color:#FF0000 ;">({{invoice.discount}})</span><br>
+
+                <span style="border-top: 1px solid #FF0000; font-weight: 600; display: inline-block;"> {{invoice.grand_total}}</span>
+            </td>
+        </tr>
+        {{#unless @last}}
+        {{# if pageBreak }}
+        <tr style="font-weight: bold;">
+            <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Sub Total</td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                {{itemAt @root.subTotalExQTy ( subTotalExQTyIndex) }}</td>
+            <td style="text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="padding-right: 10px;text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                {{itemAt @root.subTotalEx ( subTotalExIndex) }}</td>
+        </tr>
+        <tr style="page-break-after: always;"> </tr>
+        {{/if}}
+                {{/unless}}
+        {{/each}}
+
+    </tbody>
+    <tfoot>
+        <tr style="font-weight: bold;">
+            <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Sub Total</td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="color:#FF0000 ;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">({{exQty}})</td>
+            <td style="text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="padding-right: 10px;text-align:right;color:#FF0000;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">({{exAmount}})</td>
+        </tr>
+        <tr style="page-break-after: always;"> </tr>
+    </tfoot>
+</table>
+{{/if}}
+
+{{#if repair}}
+<table class="common-table" style="margin-top: 25px; page-break-after: always; ">
+
+    <tbody>
+        {{#each print_repair}}
+        {{#each this.itemrow}}
+        <tr>
+            <td style="padding-left: 10px; vertical-align: middle;">{{this.no}}</td>
+            {{#if this.main_image}}
+            <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                    src="{{this.main_image}}"
+                    alt=""></td>
+            {{else}}
+            <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                        src=""
+                        alt=""></td>
+            {{/if}}
+            <td>{{this.SKU}}<br><span style="color:#A4A4A4">{{this.stock_id}}</span></td>
+            <td style=" width: 190px; text-align: left;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;height: 45px;">{{this.Description}}</td>
+            <td></td>
+            <td>{{this.Qty}}</td>
+            <td style="text-align:right">{{this.formatted_price}}</td>
+            <td>{{this.discount_amount}}</td>
+            <td style="text-align:right">{{this.formatted_price}}</td>
+        </tr>
+        {{/each}}
+        <tr style="background: #F3ECFD;">
+            <td></td>
+            <td></td>
+            <td colspan="2" style="text-align:left;line-height: 20px;"><b>Invoice</b> : {{invoice.invoice}}<br>
+                <span> <b>RefNo</b> :{{invoice.RefNo}}</span><br>
+                <span><b>Customer name </b>: {{invoice.customer}}</span><br>
+                <span><b>Country</b> : {{invoice.country}}</span><br>
+                <span style="text-decoration: underline;"><b>Payment Method</b></span> <br>
+                {{#if invoice.cash}}
+                <span><b>Cash</b> : {{invoice.cash}}</span><br>
+                {{/if}}
+                {{#if invoice.bank}}
+                <span><b>Bank</b> : {{invoice.bank}}</span><br>
+                {{/if}}
+                {{#if invoice.card}}
+                <span><b>Credit Card</b> : {{invoice.card}}</span><br>
+                {{/if}}
+                {{#if invoice.credit_note}}
+                <span><b>Credit Note/Deposit</b> : {{invoice.credit_note}}</span><br>
+                {{/if}}
+
+            </td>
+            <td>Total</td>
+            <td>{{invoice.qty}}</td>
+            <td style="text-align:right; line-height: 25px;">{{invoice.base_amount}}<br>
+                <b>Labour</b> <br>
+                <b>Ship Charges</b> <br>
+                <b style="color:#FF0000">Discount on Total Sales</b> <br>
+                <b>Net Sales</b>
+
+            </td>
+            <td style="line-height: 25px;">{{invoice.total_dis}}</td>
+            <td style="text-align:right;  line-height: 26px;"> {{invoice.base_amount}}<br>
+                <span>{{invoice.labour}}</span> <br>
+                <span>{{invoice.Ship_Charges}}</span> <br>
+                <span style="color:#FF0000 ;">({{invoice.discount}})</span><br>
+
+                <span style="border-top: 1px solid #FF0000; font-weight: 600; display: inline-block;"> {{invoice.grand_total}}</span>
+            </td>
+        </tr>
+        {{#unless @last}}
+        {{# if pageBreak }}
+        <tr style="font-weight: bold;">
+            <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Sub Total</td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                {{itemAt @root.subTotalrepairQTy ( subTotalrepairQTyIndex) }}</td>
+            <td style="text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="padding-right: 10px;text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                {{itemAt @root.subTotalrepair ( subTotalrepairIndex) }}</td>
+        </tr>
+        <tr style="page-break-after: always;"> </tr>
+        {{/if}}
+                {{/unless}}
+        {{/each}}
+    </tbody>
+    <tfoot>
+        <tr style="font-weight: bold;">
+            <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Sub Total</td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{repairQty}}</td>
+            <td style="text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="padding-right: 10px;text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{repairAmount}}</td>
+        </tr>
+        <tr style="page-break-after: always;"> </tr>
+    </tfoot>
+</table>
+{{/if}}
+
+{{#if pos}}
+<table class="common-table" style="margin-top: 25px;page-break-after: always;">
+    <tbody>
+        {{#each print_pos}}
+        {{#each this.itemrow}}
+        <tr>
+            <td style="padding-left: 10px; vertical-align: middle;">{{this.no}}</td>
+            {{#if this.main_image}}
+            <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                    src="{{this.main_image}}"
+                    alt=""></td>
+            {{else}}
+            <td style="height:50px; width:50px;"><img style="width: 100%; height: 100%; display: block;"
+                        src=""
+                        alt=""></td>
+            {{/if}}
+            <td>{{this.SKU}}<br><span style="color:#A4A4A4">{{this.stock_id}}</span></td>
+            <td style=" width: 190px; text-align: left;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;height: 45px;">{{this.Description}}</td>
+            <td></td>
+            <td>{{this.Qty}}</td>
+            <td style="text-align:right">{{this.formatted_price}}</td>
+            <td>{{this.discount_amount}}</td>
+            <td style="text-align:right">{{this.formatted_price}}</td>
+        </tr>
+        {{/each}}
+        
+        <tr style="background: #FFD2D9;">
+            <td></td>
+            <td></td>
+            <td colspan="2" style="text-align:left;line-height: 20px;"><b>Invoice</b> : {{invoice.invoice}}<br>
+                <span> <b>RefNo</b> :{{invoice.RefNo}}</span><br>
+                <span><b>Customer name </b>: {{invoice.customer}}</span><br>
+                <span><b>Country</b> : {{invoice.country}}</span><br>
+                <span style="text-decoration: underline;"><b>Payment Method</b></span> <br>
+                {{#if invoice.cash}}
+                <span><b>Cash</b> : {{invoice.cash}}</span><br>
+                {{/if}}
+                {{#if invoice.bank}}
+                <span><b>Bank</b> : {{invoice.bank}}</span><br>
+                {{/if}}
+                {{#if invoice.card}}
+                <span><b>Credit Card</b> : {{invoice.card}}</span><br>
+                {{/if}}
+                {{#if invoice.credit_note}}
+                <span><b>Credit Note/Deposit</b> : {{invoice.credit_note}}</span><br>
+                {{/if}}
+
+            </td>
+            <td>Total</td>
+            <td>{{invoice.qty}}</td>
+            <td style="text-align:right; line-height: 25px;">{{invoice.base_amount}}<br>
+                <b>Labour</b> <br>
+                <b>Ship Charges</b> <br>
+                <b style="color:#FF0000">Discount on Total Sales</b> <br>
+                <b>Net Sales</b>
+
+            </td>
+            <td style="line-height: 25px;">{{invoice.total_dis}}</td>
+            <td style="text-align:right;  line-height: 26px;"> {{invoice.base_amount}}<br>
+                <span>{{invoice.labour}}</span> <br>
+                <span>{{invoice.Ship_Charges}}</span> <br>
+                <span style="color:#FF0000 ;">({{invoice.discount}})</span><br>
+
+                <span style="border-top: 1px solid #FF0000; font-weight: 600; display: inline-block;"> {{invoice.grand_total}}</span>
+            </td>
+        </tr>
+        {{#unless @last}}
+        {{# if pageBreak }}
+        <tr style="font-weight: bold;">
+            <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Sub Total</td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                {{itemAt @root.subTotalPOSQTy ( subTotalPOSQTyIndex) }}</td>
+            <td style="text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="padding-right: 10px;text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">
+                {{itemAt @root.subTotalPOS ( subTotalPOSIndex) }}</td>
+        </tr>
+        <tr style="page-break-after: always;"> </tr>
+        {{/if}}
+                {{/unless}}
+        {{/each}}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Sub Total</td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{posQty}}</td>
+            <td style="text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="padding-right: 10px;text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{posAmount}}</td>
+        </tr>
+        <tr style="page-break-after: always;"> </tr>
+    </tfoot>
+</table>
+{{/if}}
+
+{{#if DG}}
+<table class="common-table" style="margin-top: 25px;">
+    <thead style="display: table-header-group;break-inside: avoid;">
+        <tr>
+            <th style="padding-left: 10px;">#</th>
+            <th style="text-align: left;">Information</th>
+            <th style="text-align: left;">Customer</th>
+            <th style="text-align: left;padding-left: 30px;">Payment Method</th>
+            <th style="text-align:left">Remark</th>
+            <th style="padding-right: 10px; text-align: right;">Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each DG_combine}}
+        <tr>
+            <td style="padding-left: 10px;">{{no}}</td>
+            <td style="text-align: left;"><b>VR No</b> : {{invoice}}<br>
+                <span><b>RefNo </b></span> : {{RefNo}}
+            </td>
+            <td style="text-align: left;"><b>Name</b> : {{name}}<br>
+                <span><b>Country</b></span> : {{country}}
+            </td>
+            <td style="text-align: left;padding-left: 30px;"><b>Cash</b> : {{cash}}<br>
+                <b>Credit Card</b> : {{card}}<br>
+                <b>Bank</b> : {{bank}}
+            </td>
+            <td style="width: 100px;text-align: left;">{{remark}}</td>
+            <td style="text-align:right;">{{formatted_amount}}</td>
+        </tr>
+        {{#unless @last}}
+        {{# if pageBreak }}
+        <tr>
+            <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Total</td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="padding-right: 10px;text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{itemAt @root.subTotalDG ( subTotalDGIndex) }}</td>
+            
+        </tr>
+        <tr style="page-break-after: always;"> </tr>
+        {{/if}}
+        {{/unless}}
+        {{/each}}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2" style="text-align: left;padding-left: 10px;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">Total</td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;"></td>
+            <td style="padding-right: 10px;text-align:right;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;">{{DGAmount}}</td>
+        </tr>
+    </tfoot>
+</table>
+{{/if}}
+
+<table class="common-table" style="margin-top: 25px;">
+    <tfoot>
+        
+        <tr style="background: #F4F4F4;">
+            <td style="text-align: left;padding-left: 10px;"></td>
+            <td colspan="2" style="text-align:left;"><b>Total Quantity</b> : {{totalQTY}}<br>
+                <span> <b>Total Gwt</b> : {{GWt}}</span><br>
+                <span> <b>Total Nwt </b> : {{NetWt}}</span> <br>
+                <span> <b>Payment Summary</b></span> <br>
+                <span><b>Cash</b>: {{totoal_cash}}</span> <br>
+                <span><b>Credit Card</b> :{{totoal_card}}</span><br>
+                <span><b>Bank</b> : {{totoal_bank}}</span> <br>
+                <span>Credit Note/Deposite </b> : {{totoal_crnote}}</span> <b><br>
+                    
+            </td>
+            <td style="text-align:right;line-height: 20px;">
+                Total ({{grand_total}})<br>
+                <span style="color:#FF0000">Discount on Total Sales</span><br>
+                <span style="color:#FF0000">Total Custom Order</span><br>
+                <span style="color:#FF0000">Total Credit Note(Rf/Ex)</span><br>
+                <span style="color:#FF0000">Total Repair Order</span><br>
+                <span style="color:#FF0000">Total Deposit/Gift Card</span><br>
+                <span>Total Net Sales</span>
+            </td>
+            <td> </td>
+            <td style="padding-right: 10px; text-align:right;line-height: 20px; ;"><span>Total ({{grand_total}})</span>
+                <br>
+                <span style="color:#FF0000">({{total_discount}})</span><br>
+                <span style="color:#FF0000">({{total_customAmount}})</span><br>
+                <span style="color:#FF0000">({{total_exAmount}})</span><br>
+                <span style="color:#FF0000">({{total_repairAmount}})</span><br>
+                <span style="color:#FF0000">({{DGAmount}})</span><br>
+                <span>({{net_sales}})</span>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+</body>
+
+</html>

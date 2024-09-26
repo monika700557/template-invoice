@@ -1,0 +1,45 @@
+<table style="width: 100%; font-size: 10px; padding: 0 18px;">
+  <thead>
+    <tr>
+      <th style="text-align: left;width: 34%;">
+        <img style="width: 60px" src="data:image/png;base64,{{organization_logo}}" alt="" />
+      </th>
+      <th style="width: 70%; vertical-align: middle;">
+        <h1 style="font-size: 13px; margin-bottom: 10px; font-weight: 100;">
+          {{reportName}}
+        </h1>
+        <span style="font-weight: 100; font-size: 9px;">
+          Period ({{dateTo}} - {{dateFrom}})
+        </span>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="
+          font-weight: 600;
+          vertical-align: bottom;
+          white-space: nowrap;
+          font-size:8px;
+          ">
+        {{organization_name}}
+      </td>
+      <td></td>
+      <td style="width: 65%; text-align: right; font-weight: 500;font-size:8px;">
+        <span>
+          Page :
+          <span class="pageNumber"></span>
+          of
+          <span class="totalPages"></span>
+        </span>
+        <br />
+        <span>User : Admin</span>
+        <br />
+        <span style="white-space: nowrap;">
+          Printed : {{time}}
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+        }
+
+        .common-table tbody>tr:nth-child(even) {
+            background-color: #F7F8F9;
+        }
+
+        th,
+        td {
+            vertical-align: top;
+        }
+
+        .common-table th,
+        .common-table td {
+            padding: 9px 5px;
+        }
+
+        .common-table th {
+            border-bottom: 1px solid #2A2A2A;
+            border-top: 1px solid #2A2A2A;
+        }
+
+        .common-table tfoot td {
+            font-weight: 700;
+        }
+
+        .common-table tr {
+            break-inside: avoid;
+        }
+
+        .icon {
+            width: 12px;
+            margin-right: 12px;
+        }
+
+        .total-item-table tbody tr:last-child td {
+            padding-bottom: 20px !important;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS-order-pdf</title>
+</head>
+
+<body style="margin: 0;color: #2A2A2A;font-size: 12px;font-family: 'Open Sans', sans-serif;">
+
+    <table class="common-table">
+        <thead style="display: table-header-group;break-inside: avoid;">
+            <tr>
+                <th style="padding-left: 12px;">#</th>
+                <th>Image </th>
+                <th>SKU </span></th>
+                <th style="text-align:left">Description </th>
+                <th>Size</th>
+                <th>Qty</th>
+                <th>Price</th>
+
+                <th style="padding-right: 10px;">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td style="padding-left: 12px;">{{sr_no}}</td>
+                <td style="height:50px; width:50px;padding: 2px 5px;"><img
+                        style="width: 100%; height: 100%; display: block;" src="{{main_image}}" alt=""></td>
+                <td style="font-Weight:600">{{SKU}}
+                    <span style="display: block;text-align: center;font-weight: 400;">{{stock_id}}</td>
+                <td style="width:30% ;text-align:left;"><span
+                        style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">{{Description}}</span>
+                </td>
+                <td>{{size}}</td>
+                <td>{{Qty}}</td>
+                <td style="padding: 9px 0;">{{price}}</td>
+                <td>{{amount}}</td>
+            </tr>
+            <tr style="color:#C9C9C9">
+                <td></td>
+                <td>Remark:</td>
+                <td colspan="5" style="font-Weight:400;text-align: left;">{{remark}}</td>
+                <td></td>
+            </tr>
+            {{#unless @last}}
+            {{# if pageBreak }}
+            <tr>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"><span style="font-size: 9px;font-weight: 600;">Sub Total</span></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000;font-weight: 600;">{{itemAt  @root.subTotals ( subTotalIndex) }}</td>
+            </tr>
+            <tr style="page-break-after: always;"> </tr>
+            {{/if}}
+            {{/unless}}
+            {{/each}}
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"><span style="font-size: 9px;">Total</span></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000"></td>
+                <td style="border-top: 1px solid #000000; border-bottom:1px solid #000000">{{totalAmount}}</td>
+
+            </tr>
+        </tfoot>
+    </table>
+    <table style="width: 100%;margin-top: 10px;" cellspacing="0">
+        <tbody>
+            <tr>
+                <td style="width: 40%;padding-right: 5px;padding-left: 20px;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="font-weight: 600;">Payment Method</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        {{#if cash_show}}
+                        <tr>
+                            <td style="padding-top: 15px;">Cash</td>
+                            <td style="text-align: right; padding-top: 15px;">{{cash}}</td>
+                        </tr>
+                        {{else}}
+                        <tr></tr>
+                        {{/if}}
+                        {{#if creditCard_show}}
+                        <tr>
+                            <td>Credit card</td>
+                            <td style="text-align: right;">{{credit_card}}</td>
+                        </tr>
+                        {{else}}
+                        <tr></tr>
+                        {{/if}}
+                        {{#if bank_show}}
+                        <tr>
+                            <td>Bank</td>
+                            <td style="text-align: right;width: 40%;">{{bank}}</td>
+                        </tr>
+                        {{else}}
+                        <tr></tr>
+                        {{/if}}
+                        {{#if creditNote_show}}
+                        <tr>
+                            <td>Credit note</td>
+                            <td style="text-align: right;">{{credit_notes}}</td>
+                        </tr>
+                        {{else}}
+                        <tr></tr>
+                        {{/if}}
+                    </table>
+                    <table style="width: 100%;" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>       
+                        <tr>
+                            <td colspan="3" style="font-weight: 600;padding: 15px 5px 5px; ">Installment x {{totalInstallment}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;padding: 5px;border-top: 1px solid #C9C9C9;border-bottom: 1px solid #C9C9C9; ">#</td>
+                            <td style="font-weight: 600;padding: 5px; border-top: 1px solid #C9C9C9;border-bottom: 1px solid #C9C9C9; ">Due Date</td>
+                            <td style="text-align:right;font-weight: 600;padding: 5px; border-top: 1px solid #C9C9C9;border-bottom: 1px solid #C9C9C9; ">Amount</td>
+                        </tr>
+                        {{#each installmentData}}
+                        <tr>
+                            <td style="padding: 5px; border-bottom: 1px solid #C9C9C9;">{{sr_no}}</td>
+                            <td style="padding: 5px; border-bottom: 1px solid #C9C9C9;">{{dueDate}}</td>
+                            <td style="text-align: right; padding: 5px; border-bottom: 1px solid #C9C9C9;">{{amount}}</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </td>
+                <td style="width: 20%;padding-left: 20px;padding-right: 5px;">
+                </td>
+                <td style="width: 40%;">
+                    <table style="width: 100%;border-spacing: 0;">
+                        <tbody>
+                            {{#if pural}}
+                            <tr>
+                                <td style="font-weight:600;font-size:12px;">Summary </td>
+                                <td style="text-align: right;font-weight:600;font-size:12px;">{{item}} Items</td>
+                            </tr>
+                            {{else}}
+                            <tr>
+                                <td style="font-weight:600;font-size:12px;">Summary </td>
+                                <td style="text-align: right;font-weight:600;font-size:12px;">{{item}} Item</td>
+                            </tr>
+                            {{/if}}
+                            <tr>
+                                <td style="font-weight:600;font-size:12px;padding-top: 15px;">Total </td>
+                                <td style="text-align: right;font-weight:600;font-size:12px;padding-top: 15px;">{{amount}}</td>
+                            </tr>
+                            <tr>
+                                <td>Discount </td>
+                                <td style="text-align: right;">{{discount}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top: 8px;border-top: 1px solid #C9C9C9;font-weight: 600;"></td>
+                                <td style="padding-top: 8px;border-top: 1px solid #C9C9C9;font-weight: 600;"></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top: 10px;">Net Amount </td>
+                                <td style="text-align: right;padding-top: 10px;">{{Netamount}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>VAT {{tax_prect}}% {{tax_type}}</td>
+                                <td style="text-align: right;">{{Tax_Amt}} </td>
+                            </tr>
+                            <tr>
+                                <td>Shipping fee</td>
+                                <td style="text-align: right;">{{Ship_Charges}}</td>
+                            </tr>
+                            <tr>
+                                <td>Labour Charges</td>
+                                <td style="text-align: right;">{{labour}}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="text-align: right;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="text-align: right;"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td style="padding-top: 8px;border-top: 1px solid #C9C9C9;font-weight: 600;">
+                                    Grand Total</td>
+                                <td
+                                    style="padding-top: 8px;border-top: 1px solid #C9C9C9;text-align: right;font-weight: 600;">{{grandTotal}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top: 8px;  ">
+                                    Amount Paid</td>
+                                <td
+                                    style="padding-top: 8px; text-align: right;font-weight: 600;">{{amountPaid}}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top: 8px; font-weight: 600;">
+                                    Balance Due</td>
+                                <td
+                                    style="padding-top: 8px; text-align: right;font-weight: 600;">{{balanceDue}}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="display: flex;padding-left: 20px;">
+        <span style="white-space: nowrap;font-weight: 600;">Note :</span>
+    </div>
+    <div style="display: flex;justify-content: space-between;margin-top: 38px;padding-left: 20px;">
+        <div style="text-align: center;padding-top: 38px;">
+            <span>Please check order details and confirm to us by signing. Thank you</span>
+        </div>
+        <div style="padding-bottom: 38px;border-bottom: 1px solid #000;width: 30%;text-align: center;">
+            <span>Client Signature
+            </span>
+        </div>
+    </div>
+</body>
+
+</html>

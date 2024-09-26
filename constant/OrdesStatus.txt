@@ -1,0 +1,52 @@
+Purchase Order :
+
+status 0, label: "Canceled", color:#FF5757,
+status 1, label: "Completed", color:#68b8f2;
+status 2, label : "Pending", color:#F9BC44,
+status 3, label: "Approved", color:#72D3CE,
+
+Purchase :
+status 0, label: "Canceled", color:#FF5757,
+status 1, label: "Approved", color:#68b8f2;
+status 2, label : "Pending", color:#F9BC44,
+status 3, label: "Completed", color:#72D3CE,
+
+
+ST AND STR :
+status 0, label: "Canceled", color:#FF5757,
+status 1, label: "Approved", color:#68b8f2;
+status 2, label : "Pending", color:#F9BC44,
+status 3, label: "Transit", color:#72D3CE,
+status 4, label: "Completed", color:#72D3CE,
+
+Custom Order :
+
+status: 1, label: "Open Order", color:#F9BC44;
+status: 2 , label: "Production" , color:#FFC27B;
+status: 3 , label: "MFG Stock" , color:#72D3CE 
+status: 4 , label: "transit" , color:#97BFD9;
+status: 5 , label: "Stock" , color:#81C5F7;
+status: 6 , label: "Sold Out" , color:#F08585;       
+status: 9 , label: "Close Order" ,color: #d9d9d9;
+
+
+Repair Order :
+
+status: 1 , label: "Open Order",color:#F9BC44
+status: 2 , label: "Production", color:#FFC27B
+status: 3 , label: "MFG Stock", color:#72D3CE 
+status: 4 , label: "transit", color:#97BFD9;
+status: 5 , label: "Stock", color:#81C5F7
+status: 6 , label: "Sold Out", color:#F08585
+status: 9 ? label: "Close Order", color:#d9d9d9 
+
+Appointment :
+
+status: 0, label: "Open",color: "#5CC7C1" 
+status: 1, label: "Close", color: "#F9BC44" 
+status: 2, label: "Cancel", color: "#FF5757"
+
+Reserve Order :
+
+status: = 0, label: Reserve, color: #FFC27B
+status: = 1, label: Close Order, color: #d9d9d9
